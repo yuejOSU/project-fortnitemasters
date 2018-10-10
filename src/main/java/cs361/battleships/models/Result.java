@@ -4,7 +4,7 @@ public class Result {
 
 	public AtackStatus getResult() {
 		//TODO implement
-		//test 3
+		//test 3g
 		return null;
 	}
 
