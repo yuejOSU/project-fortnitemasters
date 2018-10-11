@@ -16,14 +16,16 @@ public class Board {
 
 	public Board() {
 		// TODO Implement
+
 		this.board = new Board[NUM_ROWS][NUM_COLS];
-		this.initializeBoard();
+		this.initializeBoard();																												//calls a method to initialize the game Board
 	}
 
+	//This method will initialize a 2-Dimensional array of Board Type
 	public void initializeBoard(){
 			for(int row = 0; row < this.board.length; row++){
 				for(int col = 0; col < this.board[i].length; col++){
-					this.board[row][col] = "";
+					this.board[row][col] = "";																							//initializes every row and col to blank spaces
 				}
 			}
 		}
