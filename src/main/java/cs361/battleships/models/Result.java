@@ -1,6 +1,10 @@
 package cs361.battleships.models;
 
 public class Result {
+	private AtackStatus result;
+	private Ship ship;
+	private Square square;
+
 
 	public AtackStatus getResult() {
 		//TODO implement
