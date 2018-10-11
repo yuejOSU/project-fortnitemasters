@@ -4,7 +4,7 @@ public class Result {
 
 	public AtackStatus getResult() {
 		//TODO implement
-		return this.result;
+		return result;
 	}
 
 	public void setResult(AtackStatus result) {
@@ -24,7 +24,7 @@ public class Result {
 
 	public Square getLocation() {
 		//TODO implement
-		return this.square;
+		return square;
 	}
 
 	public void setLocation(Square square) {
