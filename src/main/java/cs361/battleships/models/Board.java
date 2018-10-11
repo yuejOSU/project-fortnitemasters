@@ -8,7 +8,7 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	 //Private variables
-	private char[][] board;
+	private Board[][] board;
 
 	 //public variables
 	public static int NUM_ROWS = 10;
@@ -16,13 +16,13 @@ public class Board {
 
 	public Board() {
 		// TODO Implement
-		this.board = new char[NUM_ROWS][NUM_COLS];
+		this.board = new Board[NUM_ROWS][NUM_COLS];
 		this.initializeBoard();
 	}
 
 	public void initializeBoard(){
-			for(int row = 0; row < NUM_ROWS; row++){
-				for(int col = 0; col < NUM_COLS; col++){
+			for(int row = 0; row < this.board.length; row++){
+				for(int col = 0; col < this.board[i].length; col++){
 					this.board[row][col] = "";
 				}
 			}
