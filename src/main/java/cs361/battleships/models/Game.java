@@ -19,6 +19,7 @@ public class Game {
 	 */
     public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
         boolean successful = playersBoard.placeShip(ship, x, y, isVertical);
+
         if (!successful)
             return false;
 
@@ -29,7 +30,6 @@ public class Game {
             // let it try until it gets it right
             opponentPlacedSuccessfully = opponentsBoard.placeShip(s, randRow(), randCol(), randVertical());
         } while (!opponentPlacedSuccessfully);
-
         return true;
     }
 
