@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random; // This will be important for random functions
+
 
 import static cs361.battleships.models.AttackStatus.*;
 
@@ -50,20 +52,19 @@ public class Game {
     }
 
     private char randCol() {
-<<<<<<< HEAD
-
-        return 'X';
-=======
+        char[] dims1 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
       //grab random char
-        Random ran = new Random();
-        return this.Alphabet.charAt(ran.nextInt(10) + 1);
->>>>>>> 38fe1d61b6d3776861bf2c358701125d96a7be20
+        Random r = new Random();
+        int rand = r.nextInt(10) +1;
+        return dims1[rand];
+        //return this.Alphabet.charAt(r.nextInt(10) + 1);
     }
 
     private int randRow() {
       //random num 0 - 10
-        Random ran = new Random();
-        return ran.nextInt(10) + 1;
+        int[] dim2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        Random r = new Random();
+        return dim2[r.nextInt(10) + 1];
 
     }
 
