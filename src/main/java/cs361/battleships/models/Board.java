@@ -16,8 +16,7 @@ public class Board {
 	public static int NUM_COLS = 10;
 
 	public Board() {
-
-		this.board = new Square[NUM_ROWS][NUM_COLS];
+		this.board = board;
 		this.initializeBoard();	//calls a method to initialize the game Board
 		this.createShips();
 		this.recordAttacks();
@@ -25,9 +24,10 @@ public class Board {
 
 	//This method will initialize a 2-Dimensional array of Board Type
 	public void initializeBoard(){
+		this.board = new Square[NUM_ROWS][NUM_COLS];
 			for(int row = 0; row < this.board.length; row++){
-				for(int col = 0; col < this.board[i].length; col++){
-					this.board[row][col] = "";	//initializes every row and col to blank spaces
+				for(int col = 0; col < this.board[row].length; col++){
+					this.board[row][col] = null;	//initializes every row and col to blank spaces
 				}
 			}
 	}
@@ -35,16 +35,33 @@ public class Board {
 		ships = new ArrayList<Ship>();
 	}
 	public void recordAttacks(){
-		attacks = new ArrayList<Result>();
+		//attacks = new ArrayList<Result>();
 	}
-}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		// TODO Implement
-		return false;
+		// the following is a very simple placing ship functionality
+		// and does not include handlings like if the ship has already been
+		// placed, checking squares for already occupied ships, etc...
+
+		// simple check if ship coordinate placement is off the grid
+		/*if (isVertical) {
+			if(x+ship.getLength()-1 > NUM_ROWS) {
+			    return false;
+            }
+		}
+		else {
+			if(y+ship.getLength()-1 > NUM_COLS) {
+				return false;
+			}
+		}*/
+
+		ship.setOccupiedSquares(new Square(x,y), isVertical);
+		ships.add(ship);
+
+		return true;
 	}
 
 	/*
@@ -53,15 +70,21 @@ public class Board {
 	public Result attack(int x, char y) {
 			Result results = new Result();
 
-			Square square = new Square(x, y);
+			//ASCII numbers used to check for bounds
+			if((x > 0) && (x < 10) && (y >= 65) && (y <= 74)){
 
-			results.setLocation(square);
+			}
 
-		return results;
+
+
+			//Square square = new Square(x, y);
+
+			//results.setLocation(square);
+
+		return null;
 	}
 
 	public List<Ship> getShips() {
-
 		return ships;
 	}
 
@@ -70,10 +93,10 @@ public class Board {
 	}
 
 	public List<Result> getAttacks() {
-		return attacks;
+		return null;
 	}
 
 	public void setAttacks(List<Result> attacks) {
-		this.attacks = attacks;
+		//this.attacks = attacks;
 	}
 }
