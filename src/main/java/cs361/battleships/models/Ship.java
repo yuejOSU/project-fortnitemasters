@@ -29,7 +29,6 @@ public class Ship {
 		occupiedSquares = new ArrayList<>();
 	}
 
-
 	public List<Square> getOccupiedSquares() {
 		return occupiedSquares;
 	}
