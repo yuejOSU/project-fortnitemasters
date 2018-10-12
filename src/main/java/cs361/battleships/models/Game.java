@@ -57,7 +57,6 @@ public class Game {
         Random r = new Random();
         int rand = r.nextInt(10) +1;
         return dims1[rand];
-        //return this.Alphabet.charAt(r.nextInt(10) + 1);
     }
 
     private int randRow() {

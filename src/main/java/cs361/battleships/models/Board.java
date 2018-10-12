@@ -68,7 +68,14 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Result attack(int x, char y) {
-			//Result results = new Result();
+			Result results = new Result();
+
+			//ASCII numbers used to check for bounds
+			if((x > 0) && (x < 10) && (y >= 65) && (y <= 74)){
+
+			}
+
+
 
 			//Square square = new Square(x, y);
 
