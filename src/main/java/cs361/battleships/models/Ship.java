@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
-	private int size:
+	private int size;
 	private String name;
 	@JsonProperty private List<Square> occupiedSquares;
 
