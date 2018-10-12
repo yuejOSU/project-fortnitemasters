@@ -50,7 +50,7 @@ public class Game {
     }
 
     private char randCol() {
-        // TODO implement
+
         return 'X';
     }
 
