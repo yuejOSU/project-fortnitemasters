@@ -18,4 +18,6 @@ public class BoardTest {
 			assertFalse(board.placeShip(new Ship("MINESWEEPER"), 5, 'B', false));
 			assertFalse(board.placeShip(new Ship("DESTROYER"), 5, 'A', false));
 		}
+	@Test
+
 }
