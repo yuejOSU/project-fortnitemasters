@@ -6,6 +6,7 @@ public class Result {
 	private Ship ship;
 	private Square square;
 
+  
 	//Getters and Setters initialized below
 	public AttackStatus getResult() {
 		return result;
