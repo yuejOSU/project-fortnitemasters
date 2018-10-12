@@ -16,8 +16,7 @@ public class Board {
 	public static int NUM_COLS = 10;
 
 	public Board() {
-
-		this.board = new Square[NUM_ROWS][NUM_COLS];
+		this.board = board;
 		this.initializeBoard();	//calls a method to initialize the game Board
 		this.createShips();
 		this.recordAttacks();
@@ -25,9 +24,10 @@ public class Board {
 
 	//This method will initialize a 2-Dimensional array of Board Type
 	public void initializeBoard(){
+		this.board = new Square[NUM_ROWS][NUM_COLS];
 			for(int row = 0; row < this.board.length; row++){
-				for(int col = 0; col < this.board[i].length; col++){
-					this.board[row][col] = "";	//initializes every row and col to blank spaces
+				for(int col = 0; col < this.board[row].length; col++){
+					this.board[row][col] = null;	//initializes every row and col to blank spaces
 				}
 			}
 	}
@@ -37,7 +37,6 @@ public class Board {
 	public void recordAttacks(){
 		attacks = new ArrayList<Result>();
 	}
-}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
@@ -61,7 +60,6 @@ public class Board {
 	}
 
 	public List<Ship> getShips() {
-
 		return ships;
 	}
 

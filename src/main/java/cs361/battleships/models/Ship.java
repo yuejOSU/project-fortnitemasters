@@ -9,24 +9,24 @@ public class Ship {
 	private int size;
 	private String name;
 	private int length;
-	@JsonProperty private List<Square> occupiedSquares;
+	@JsonProperty
+	private List<Square> occupiedSquares;
 
 	//initialize the ship types
 	public Ship(String kind) {
-		this.name = kind;
-		name = name.toUppercase();
-		if(name=="BATTLESHIP"){
+		this.name = kind.toUpperCase();
+		//name = name.toUppercase();
+		if (name.equals("BATTLESHIP")) {
 			this.occupiedSquares = new ArrayList<>(4);
 			this.length = 4;
-
-		}
-		else if(name=="DESTROYER"){
-			this.occupiedSquares = new Arraylist<>(3);
+		} else if (name.equals("DESTROYER")) {
+			this.occupiedSquares = new ArrayList<>(3);
 			this.length = 3;
-		}
-		else {
+		} else if (name.equals("MINESWEEPER")) {
 			this.occupiedSquares = new ArrayList<>(2);
 			this.length = 2;
+		} else {
+			throw new IllegalArgumentException("This is not a valid ship!");
 		}
 	}
 
@@ -37,7 +37,6 @@ public class Ship {
 	public List<Square> getOccupiedSquares() {
 		return occupiedSquares;
 	}
-}
 
 	public void setOccupiedSquares(List<Square> occupiedSquares) {
 		this.occupiedSquares = occupiedSquares;
@@ -54,3 +53,5 @@ public class Ship {
 	public int getLength() {
 		return length;
 	}
+
+}
