@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random; // This will be important for random functions
+
 
 import static cs361.battleships.models.AttackStatus.*;
 
@@ -11,7 +13,7 @@ public class Game {
 
     @JsonProperty private Board playersBoard = new Board();
     @JsonProperty private Board opponentsBoard = new Board();
-
+    private String Alphabet = "ABCDEFGHIJ"
     /*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
@@ -50,17 +52,25 @@ public class Game {
     }
 
     private char randCol() {
-        // TODO implement
-        return 'X';
+        char[] dims1 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+      //grab random char
+        Random r = new Random();
+        int rand = r.nextInt(10) +1;
+        return dims1[rand];
+        //return this.Alphabet.charAt(r.nextInt(10) + 1);
     }
 
     private int randRow() {
-        // TODO implement
-        return 0;
+      //random num 0 - 10
+        int[] dim2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        Random r = new Random();
+        return dim2[r.nextInt(10) + 1];
+
     }
 
     private boolean randVertical() {
-        // TODO implement
-        return false;
+      //get a number 0 or 1
+        Random ran = new Random();
+        return ran.nextBoolean();
     }
 }

@@ -11,4 +11,11 @@ public class BoardTest {
         Board board = new Board();
         assertFalse(board.placeShip(new Ship("MINESWEEPER"), 11, 'C', true));
     }
+    @Test
+		public void testOverlapsShips() {
+			Board board = new Board();
+			assertFalse(board.placeShip(new Ship("BATTLESHIP"), 5, 'A', false));
+			assertFalse(board.placeShip(new Ship("MINESWEEPER"), 5, 'B', false));
+			assertFalse(board.placeShip(new Ship("DESTROYER"), 5, 'A', false));
+		}
 }
