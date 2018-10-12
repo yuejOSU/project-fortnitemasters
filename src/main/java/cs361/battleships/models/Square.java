@@ -26,4 +26,6 @@ public class Square {
 	public void setRow(int row) {
 		this.row = row;
 	}
+
+	public Square() {}
 }
