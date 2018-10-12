@@ -14,7 +14,7 @@ public class Ship {
 	//initialize the ship types
 	public Ship(String kind) {
 		this.name = kind;
-		name= name.toUppercase();
+		name = name.toUppercase();
 		if(name=="BATTLESHIP"){
 			this.occupiedSquares = new ArrayList<>(4);
 			this.length = 4;
