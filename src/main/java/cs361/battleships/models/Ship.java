@@ -15,6 +15,7 @@ public class Ship {
 		kind = kind.toUppercase();
 		if(kind=="BATTLESHIP"){
 			this.occupiedSquares = new ArrayList<>(4);
+
 		}
 		else if(kind=="DESTROYER"){
 			this.occupiedSquares = new Arraylist<>(3);

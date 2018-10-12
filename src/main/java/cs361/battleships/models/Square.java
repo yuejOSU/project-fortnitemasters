@@ -5,10 +5,13 @@ public class Square {
 
 	private int row;
 	private char column;
+	//used to check if current position is filled
+	private boolean filled;
 
 	public Square(int row, char column) {
 		this.row = row;
 		this.column = column;
+		this.filled = false;
 	}
 
 	public char getColumn() {
@@ -27,5 +30,7 @@ public class Square {
 		this.row = row;
 	}
 
-	public Square() {}
+	public void setFilled(boolean filled) { this.filled = filled;}
+	//returns if the current element is filled with a ship.
+	public boolean getFilled () { return filled;}
 }
