@@ -1,121 +1,77 @@
 package cs361.battleships.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Board {
+
+	@JsonProperty private List<Ship> ships;
+	@JsonProperty private List<Result> attacks;
+
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
-	 //Private variables
-	private Square[][] board;
-	private List<Ship> ships;
-
-	 //public variables
-	public static int NUM_ROWS = 10;
-	public static int NUM_COLS = 10;
-
 	public Board() {
-		this.board = board;
-		this.initializeBoard();	//calls a method to initialize the game Board
-		this.createShips();
-		this.recordAttacks();
-	}
-
-	//This method will initialize a 2-Dimensional array of Board Type
-	public void initializeBoard(){
-		this.board = new Square[NUM_ROWS][NUM_COLS];
-			for(int row = 0; row < this.board.length; row++){
-				for(int col = 0; col < this.board[row].length; col++){
-					this.board[row][col] = null;	//initializes every row and col to blank spaces
-				}
-			}
-	}
-	public void createShips(){
-		ships = new ArrayList<Ship>();
-	}
-	public void recordAttacks(){
-		//attacks = new ArrayList<Result>();
+		ships = new ArrayList<>();
+		attacks = new ArrayList<>();
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		// the following is a very simple placing ship functionality
-		// and does not include handlings like if the ship has already been
-		// placed, checking squares for already occupied ships, etc...
-
-		// simple check if ship coordinate placement is off the grid
-		/*if (isVertical) {
-			if(x+ship.getLength()-1 > NUM_ROWS) {
-			    return false;
-            }
-		}
-		else {
-			if(y+ship.getLength()-1 > NUM_COLS) {
-				return false;
-			}
-		}*/
-		if((x > 0) && (x < 10) && (y >= 65) && (y <= 74)) {
-			if(isVertical) {
-				if(ship.getLength() - 1 > 10) {
-					return false;
-				}
-				ship.setOccupiedSquares(new Square(x, y), isVertical);
-
-			}
-			else{
-				if(ship.getLength() - 1 > 75){
-					return false;
-				}
-				ship.setOccupiedSquares(new Square(x, y), isVertical);
-			}
-		}
-		else{
+		if (ships.size() >= 3) {
 			return false;
 		}
-		ships.add(ship);
+		if (ships.stream().anyMatch(s -> s.getKind().equals(ship.getKind()))) {
+			return false;
+		}
+		final var placedShip = new Ship(ship.getKind());
+		placedShip.place(y, x, isVertical);
+		if (ships.stream().anyMatch(s -> s.overlaps(placedShip))) {
+			return false;
+		}
+		if (placedShip.getOccupiedSquares().stream().anyMatch(s -> s.isOutOfBounds())) {
+			return false;
+		}
+		ships.add(placedShip);
 		return true;
-		//ship.setOccupiedSquares(new Square(x,y), isVertical);
-		//ships.add(ship);
-
-		//return true;
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Result attack(int x, char y) {
-			Result results = new Result();
+		Result attackResult = attack(new Square(x, y));
+		attacks.add(attackResult);
+		return attackResult;
+	}
 
-			//ASCII numbers used to check for bounds
-			if((x > 0) && (x < 10) && (y >= 65) && (y <= 74)){
-
+	private Result attack(Square s) {
+		if (attacks.stream().anyMatch(r -> r.getLocation().equals(s))) {
+			var attackResult = new Result(s);
+			attackResult.setResult(AtackStatus.INVALID);
+			return attackResult;
+		}
+		var shipsAtLocation = ships.stream().filter(ship -> ship.isAtLocation(s)).collect(Collectors.toList());
+		if (shipsAtLocation.size() == 0) {
+			var attackResult = new Result(s);
+			return attackResult;
+		}
+		var hitShip = shipsAtLocation.get(0);
+		var attackResult = hitShip.attack(s.getRow(), s.getColumn());
+		if (attackResult.getResult() == AtackStatus.SUNK) {
+			if (ships.stream().allMatch(ship -> ship.isSunk())) {
+				attackResult.setResult(AtackStatus.SURRENDER);
 			}
-
-
-
-			//Square square = new Square(x, y);
-
-			//results.setLocation(square);
-
-		return null;
+		}
+		return attackResult;
 	}
 
-	public List<Ship> getShips() {
+	List<Ship> getShips() {
 		return ships;
-	}
-
-	public void setShips(List<Ship> ships) {
-		this.ships = ships;
-	}
-
-	public List<Result> getAttacks() {
-		return null;
-	}
-
-	public void setAttacks(List<Result> attacks) {
-		//this.attacks = attacks;
 	}
 }
