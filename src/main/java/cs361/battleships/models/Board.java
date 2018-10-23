@@ -57,11 +57,30 @@ public class Board {
 				return false;
 			}
 		}*/
+		if((x > 0) && (x < 10) && (y >= 65) && (y <= 74)) {
+			if(isVertical) {
+				if(ship.getLength() - 1 > 10) {
+					return false;
+				}
+				ship.setOccupiedSquares(new Square(x, y), isVertical);
 
-		ship.setOccupiedSquares(new Square(x,y), isVertical);
+			}
+			else{
+				if(ship.getLength() - 1 > 75){
+					return false;
+				}
+				ship.setOccupiedSquares(new Square(x, y), isVertical);
+			}
+		}
+		else{
+			return false;
+		}
 		ships.add(ship);
-
 		return true;
+		//ship.setOccupiedSquares(new Square(x,y), isVertical);
+		//ships.add(ship);
+
+		//return true;
 	}
 
 	/*
