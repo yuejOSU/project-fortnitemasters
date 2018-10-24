@@ -7,6 +7,10 @@
     background-color: lightgray;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
+    cursor: default;
+    display: inline-block;
+    position: relative;
 
 }
 
@@ -44,4 +48,7 @@ td:hover {
     background-color: deepskyblue;
 }
 
+~h1 {
+    background-color: aqua;
+}
 
