@@ -7,6 +7,10 @@
     background-color: lightgray;
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
+    cursor: default;
+    display: inline-block;
+    position: relative;
 
 }
 
@@ -91,6 +95,7 @@ table#opponent.battleGrid{
     bottom: 250px;
 
 
+<<<<<<< HEAD
 }
 table#player.battleGrid{
     position: absolute;
@@ -99,3 +104,8 @@ table#player.battleGrid{
 
 }
 
+=======
+~h1 {
+    background-color: aqua;
+}
+>>>>>>> 9979e3bf6579f38905485611b11ad4135f64050e
