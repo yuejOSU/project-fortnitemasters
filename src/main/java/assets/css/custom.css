@@ -4,11 +4,20 @@
 .battleGrid {
     border: 1px solid black;
     border-spacing: 0px;
+    background-color: lightgray;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    cursor: default;
+    display: inline-block;
+    position: relative;
+
 }
 
 .battleGrid tr {
     border: 1px solid black;
     height: 30px;
+    background-color: coral;
 }
 
 .battleGrid td {
@@ -17,7 +26,7 @@
 }
 
 td:hover {
-    background-color: gray;
+    background-color: gray();
 }
 
 .placed {
@@ -29,13 +38,25 @@ td:hover {
 }
 
 .hit {
-    background-color: orange;
+    background-color: maroon;
 }
 
 .sink {
-    background-color: red;
+    background-color: darkgreen;
 }
 
 .miss {
-    background-color: blue;
+    background-color: deepskyblue;
 }
+.container h1{
+    text-align: center;
+}
+
+body {
+    background-color: peachPuff;
+}
+
+~h1 {
+    background-color: aqua;
+}
+
