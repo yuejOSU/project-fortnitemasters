@@ -17,6 +17,7 @@
 .battleGrid tr {
     border: 1px solid black;
     height: 30px;
+    background-color: coral;
 }
 
 .battleGrid td {
@@ -46,6 +47,13 @@ td:hover {
 
 .miss {
     background-color: deepskyblue;
+}
+.container h1{
+    text-align: center;
+}
+
+body {
+    background-color: peachPuff;
 }
 
 ~h1 {
