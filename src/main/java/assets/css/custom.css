@@ -46,11 +46,31 @@ td:hover {
 }
 .container h1{
     text-align: center;
+    font-weight: bold;
+    text-shadow: 3px 2px gray;
+    margin-top: 50px;
+}
+.container p1{
+    margin-left: 250px;
+    margin-right: 675px;
+}
+.container p2{
+
+}
+.container p3{
+   font-weight: bold;
+   height: 12px;
+   width:  8px;
 }
 .container ul {
     list-style-type: none;
     position: absolute;
-    margin-top: 140px;
+    margin-top: 120px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
 }
 .container hr{
    border: none;
