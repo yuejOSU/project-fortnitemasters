@@ -56,13 +56,21 @@ td:hover {
     margin-top: 50px;
 }
 .container p1{
-    margin-left: 250px;
+    margin-left: 400px;
     margin-right: 675px;
+    font-size: 30px;
+    color: darkblue;
+    font-weight: bold;
 }
+
 .container p2{
-    margin-left: 1000px;
+    margin-left: 1300px;
     margin-right: 1425px;
+    font-size: 30px;
+    color: darkblue;
+    font-weight: bold;
 }
+
 .container p3{
    font-weight: bold;
    height: 12px;
@@ -93,12 +101,12 @@ body {
 }
 table#opponent.battleGrid{
     position: absolute;
-    margin-left: 1000px;
+    margin-left: 1250px;
     bottom: 250px;
 }
 table#player.battleGrid{
     position: absolute;
-    margin-left: 250px;
+    margin-left: 325px;
     bottom: 250px;
 
 }
