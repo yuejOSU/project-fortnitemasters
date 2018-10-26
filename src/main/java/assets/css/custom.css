@@ -17,7 +17,7 @@
 .battleGrid tr {
     border: 1px solid black;
     height: 30px;
-    background-color: coral;
+    background-color: #24BDF2;
 }
 
 .battleGrid td {
@@ -30,30 +30,30 @@ td:hover {
 }
 
 .placed {
-    background-color: gray;
-}
-
-.occupied {
     background-color: black;
 }
 
+.occupied {
+    background-color: #C2C0BD;
+}
+
 .hit {
-    background-color: maroon;
+    background-color: red;
 }
 
 .sink {
-    background-color: darkgreen;
+    background-color: maroon;
 }
 
 .miss {
-    background-color: deepskyblue;
+    background-color: white;
 }
 .container h1{
     text-align: center;
 }
 
 body {
-    background-color: peachPuff;
+    background-color: #F28216;
 }
 
 ~h1 {
