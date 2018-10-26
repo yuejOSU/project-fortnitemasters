@@ -13,3 +13,4 @@ public class GameTest {
         assertTrue(game.placeShip(new Ship("BATTLESHIP"), 1, 'D', false));
         assertFalse(game.placeShip(new Ship("BATTLESHIP"), 1, 'A', false));
     }
+}
