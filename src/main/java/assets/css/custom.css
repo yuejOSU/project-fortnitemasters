@@ -50,13 +50,62 @@ td:hover {
 }
 .container h1{
     text-align: center;
+    font-weight: bold;
+    text-shadow: 3px 2px gray;
+    margin-top: 50px;
 }
+.container p1{
+    margin-left: 250px;
+    margin-right: 675px;
+}
+.container p2{
 
+}
+.container p3{
+   font-weight: bold;
+   height: 12px;
+   width:  8px;
+}
+.container ul {
+    list-style-type: none;
+    position: absolute;
+    margin-top: 120px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+}
+.container hr{
+   border: none;
+}
+.container footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:30px;
+
+}
 body {
     background-color: peachPuff;
 }
+table#opponent.battleGrid{
+    position: absolute;
+    margin-left: 1000px;
+    bottom: 250px;
 
+
+<<<<<<< HEAD
+}
+table#player.battleGrid{
+    position: absolute;
+    margin-left: 250px;
+    bottom: 250px;
+
+}
+
+=======
 ~h1 {
     background-color: aqua;
 }
-
+>>>>>>> 9979e3bf6579f38905485611b11ad4135f64050e
