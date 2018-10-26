@@ -17,7 +17,7 @@
 .battleGrid tr {
     border: 1px solid black;
     height: 30px;
-    background-color: coral;
+    background-color: #24BDF2;
 }
 
 .battleGrid td {
@@ -30,24 +30,25 @@ td:hover {
 }
 
 .placed {
-    background-color: gray;
-}
-
-.occupied {
     background-color: black;
 }
 
+.occupied {
+    background-color: #C2C0BD;
+}
+
 .hit {
-    background-color: maroon;
+    background-color: red;
 }
 
 .sink {
-    background-color: darkgreen;
+    background-color: maroon;
 }
 
 .miss {
-    background-color: deepskyblue;
+    background-color: white;
 }
+
 .container h1{
     text-align: center;
     font-weight: bold;
@@ -55,12 +56,21 @@ td:hover {
     margin-top: 50px;
 }
 .container p1{
-    margin-left: 250px;
+    margin-left: 400px;
     margin-right: 675px;
+    font-size: 30px;
+    color: darkblue;
+    font-weight: bold;
 }
-.container p2{
 
+.container p2{
+    margin-left: 1300px;
+    margin-right: 1425px;
+    font-size: 30px;
+    color: darkblue;
+    font-weight: bold;
 }
+
 .container p3{
    font-weight: bold;
    height: 12px;
@@ -74,38 +84,33 @@ td:hover {
     border: 2px solid black;
     padding: 20px;
     width: 150px;
-    height: 150px;
+    height: 175px;
 }
-.container hr{
+.container hr {
    border: none;
 }
 .container footer {
-   position:absolute;
+   position: absolute;
    bottom:0;
    width:100%;
    height:30px;
 
 }
 body {
-    background-color: peachPuff;
+    background-color: #F28216;
 }
 table#opponent.battleGrid{
     position: absolute;
-    margin-left: 1000px;
+    margin-left: 1250px;
     bottom: 250px;
-
-
-<<<<<<< HEAD
 }
 table#player.battleGrid{
     position: absolute;
-    margin-left: 250px;
+    margin-left: 325px;
     bottom: 250px;
 
 }
 
-=======
 ~h1 {
     background-color: aqua;
 }
->>>>>>> 9979e3bf6579f38905485611b11ad4135f64050e
