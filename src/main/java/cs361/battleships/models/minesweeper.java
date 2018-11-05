@@ -13,20 +13,4 @@ public class minesweeper extends Ship {
         }
 
     }
-
-    public void setCaptainsQuarters(int row, char column, boolean vertical) {
-        String col = "ABCDEFGHIJ";
-        int x = 0;
-        if (vertical == true) {
-            this.captainsQuarters = new Square(row + 2, column);
-        } else {
-            for (int i = 0; i < col.length(); i++) {
-                if (col.charAt(i) == column) {
-                    x = i;
-                    break;
-                }
-            }
-            this.captainsQuarters = new Square(row, col.charAt(x));
-        }
-    }
 }
