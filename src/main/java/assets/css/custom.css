@@ -96,6 +96,10 @@ td:hover {
    height:30px;
 
 }
+#sonar_button{
+    width: 30px;
+    height: 30px;
+}
 body {
     background-color: #F28216;
 }
