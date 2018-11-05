@@ -12,11 +12,11 @@ import java.util.Set;
 
 public class Ship {
 
-	@JsonProperty private String kind;
-	@JsonProperty private List<Square> occupiedSquares;
-	@JsonProperty private int size;
-	@JsonProperty private int shield;
-	@JsonProperty private Square captainsQuarters;
+	@JsonProperty protected String kind;
+	@JsonProperty protected List<Square> occupiedSquares;
+	@JsonProperty protected int size;
+	@JsonProperty protected int shield;
+	@JsonProperty protected Square captainsQuarters;
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
 	}

@@ -16,17 +16,17 @@ public class destroyer extends Ship {
 
     public void setCaptainsQuarters(int row, char column, boolean vertical) {
         String col = "ABCDEFGHIJ";
-        int col = 0;
-        if (vertical != 0) {
+        int x = 0;
+        if (vertical == true) {
             this.captainsQuarters = new Square(row + 2, column);
         } else {
             for (int i = 0; i < col.length(); i++) {
                 if (col.charAt(i) == column) {
-                    col = i;
+                    x = i;
                     break;
                 }
             }
-            this.captainsQuarters = new Square(row, col.charAt(1 + col));
+            this.captainsQuarters = new Square(row, col.charAt(1 + x));
         }
     }
 }
