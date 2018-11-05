@@ -27,7 +27,7 @@ public class Ship {
 		switch(kind) {
 			case "MINESWEEPER":
 				size = 2;
-                shield = 2;
+				shield = 2;
 				break;
 			case "DESTROYER":
 				size = 3;
@@ -69,7 +69,7 @@ public class Ship {
 		return kind;
 	}
 
-    public String getShield() {
+    public int getShield() {
         return shield;
     }
 
