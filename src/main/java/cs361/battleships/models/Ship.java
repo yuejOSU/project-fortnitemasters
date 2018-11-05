@@ -15,6 +15,7 @@ public class Ship {
 	@JsonProperty private String kind;
 	@JsonProperty private List<Square> occupiedSquares;
 	@JsonProperty private int size;
+	@JsonProperty private int shield;
 
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
@@ -29,9 +30,11 @@ public class Ship {
 				break;
 			case "DESTROYER":
 				size = 3;
+				shield = 2;
 				break;
 			case "BATTLESHIP":
 				size = 4;
+				shield = 2;
 				break;
 		}
 	}
@@ -64,6 +67,10 @@ public class Ship {
 	public String getKind() {
 		return kind;
 	}
+
+    public String getShield() {
+        return shield;
+    }
 
 	public Result attack(int x, char y) {
 		var attackedLocation = new Square(x, y);
