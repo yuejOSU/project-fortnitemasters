@@ -12,11 +12,11 @@ import java.util.Set;
 
 public class Ship {
 
-	@JsonProperty private String kind;
-	@JsonProperty private List<Square> occupiedSquares;
-	@JsonProperty private int size;
-	@JsonProperty private int shield;
-
+	@JsonProperty protected String kind;
+	@JsonProperty protected List<Square> occupiedSquares;
+	@JsonProperty protected int size;
+	@JsonProperty protected int shield;
+	@JsonProperty protected Square captainsQuarters;
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
 	}
@@ -65,9 +65,14 @@ public class Ship {
 		return getOccupiedSquares().stream().anyMatch(s -> s.equals(location));
 	}
 
+	public Square getCaptainsQuarters() {
+		return this.captainsQuarters;
+	}
+
 	public String getKind() {
 		return kind;
 	}
+
 
     public int getShield() {
         return shield;
