@@ -168,6 +168,9 @@ function initGame() {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
     });
+    document.getElementById("SONAR").addEventListener("click", function(e) {
+        //registerCellListener(place(4));
+    });
     sendErr("GET", "/game", {}, function(data) {
         game = data;
     });
