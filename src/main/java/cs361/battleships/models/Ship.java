@@ -16,7 +16,7 @@ public class Ship {
 	@JsonProperty private List<Square> occupiedSquares;
 	@JsonProperty private int size;
 	@JsonProperty private int shield;
-
+	@JsonProperty private Square captainsQuarters;
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
 	}
@@ -65,9 +65,14 @@ public class Ship {
 		return getOccupiedSquares().stream().anyMatch(s -> s.equals(location));
 	}
 
+	public Square getCaptainsQuarters() {
+		return this.captainsQuarters;
+	}
+
 	public String getKind() {
 		return kind;
 	}
+
 
     public int getShield() {
         return shield;
