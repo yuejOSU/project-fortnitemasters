@@ -27,6 +27,7 @@ public class Ship {
 		switch(kind) {
 			case "MINESWEEPER":
 				size = 2;
+                shield = 2;
 				break;
 			case "DESTROYER":
 				size = 3;
