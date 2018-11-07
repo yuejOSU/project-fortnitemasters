@@ -17,6 +17,7 @@ public class Ship {
 	@JsonProperty protected int size;
 	@JsonProperty protected int shield;
 	@JsonProperty protected Square captainsQuarters;
+
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
 	}
@@ -27,15 +28,12 @@ public class Ship {
 		switch(kind) {
 			case "MINESWEEPER":
 				size = 2;
-				shield = 2;
 				break;
 			case "DESTROYER":
 				size = 3;
-				shield = 2;
 				break;
 			case "BATTLESHIP":
 				size = 4;
-				shield = 2;
 				break;
 		}
 	}
@@ -73,10 +71,24 @@ public class Ship {
 		return kind;
 	}
 
+	public void setShield() {
+		this.shield = 2;
+	}
 
-    public int getShield() {
+	public int getShield() {
         return shield;
     }
+
+	public void hitCQ() {
+		this.shield--;
+	}
+
+	public boolean sunkCQ() {
+		if (this.getShield() > 0) {
+			return false;
+		}
+		return true;
+	}
 
 	public Result attack(int x, char y) {
 		var attackedLocation = new Square(x, y);
