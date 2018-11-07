@@ -27,6 +27,10 @@ function markHits(board, elementId, surrenderText) {
             className = "hit"
         else if (attack.result === "SURRENDER")
             alert(surrenderText);
+        else if (attack.result === "EMPTY")
+            className = "sonar-free";
+        else if (attack.result === "OCCUPIED")
+            className = "sonar-occupied";
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
 }
@@ -76,7 +80,7 @@ function cellClick() {
             }
         });
     } else {
-        sendXhr("POST", "/attack", {game: game, x: row, y: col}, function(data) {
+        sendMiss("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
             redrawGrid();
         })
@@ -87,7 +91,22 @@ function sendXhr(method, url, data, handler) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function(event) {
         if (req.status != 200) {
-            alert("Cannot complete the action");
+            alert("You are either out of bounds or placing a ship you already have. Please try again.");
+            return;
+        }
+        handler(JSON.parse(req.responseText));
+    });
+    req.open(method, url);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSON.stringify(data));
+}
+//test
+
+function sendErr(method, url, data, handler) {
+    var req = new XMLHttpRequest();
+    req.addEventListener("load", function(event) {
+        if (req.status != 200) {
+            alert("This ship is already used. Place a new ship!");
             return;
         }
         handler(JSON.parse(req.responseText));
@@ -97,6 +116,20 @@ function sendXhr(method, url, data, handler) {
     req.send(JSON.stringify(data));
 }
 
+function sendMiss(method, url, data, handler) {
+    var req = new XMLHttpRequest();
+    req.addEventListener("load", function(event) {
+        if (req.status != 200) {
+            alert("This is a shot you have already attempted. Fire somewhere else.");
+            return;
+        }
+        handler(JSON.parse(req.responseText));
+    });
+    req.open(method, url);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSON.stringify(data));
+}
+//end Test
 function place(size) {
     return function() {
         let row = this.parentNode.rowIndex;
@@ -139,7 +172,10 @@ function initGame() {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
     });
-    sendXhr("GET", "/game", {}, function(data) {
+    document.getElementById("SONAR").addEventListener("click", function(e) {
+        //registerCellListener(place(4));
+    });
+    sendErr("GET", "/game", {}, function(data) {
         game = data;
     });
 };

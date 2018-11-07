@@ -22,10 +22,18 @@ public enum AtackStatus {
 	 * surrender).
 	 */
 	SURRENDER,
-	
+
 	/**
 	 * The result if the coordinates given are invalid.
 	 */
 	INVALID,
+	/**
+	 * The result if the coordinates given are invalid.
+	 */
+	EMPTY,
+	/**
+	 * The result if the coordinates given are invalid.
+	 */
+	OCCUPIED,
 
 }

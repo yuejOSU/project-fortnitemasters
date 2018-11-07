@@ -30,4 +30,5 @@ public class PlacementGameAction {
     public boolean isVertical() {
         return isVertical;
     }
+
 }
