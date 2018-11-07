@@ -84,10 +84,12 @@ public class Ship {
 	}
 
 	public boolean sunkCQ() {
-		if (this.getShield() > 0) {
+		if (this.getShield() <= 0) {
 			return false;
 		}
-		return true;
+		else {
+			return true;
+		}
 	}
 
 	public Result attack(int x, char y) {
