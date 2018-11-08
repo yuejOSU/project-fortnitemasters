@@ -61,7 +61,7 @@ function redrawGrid() {
             document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) = 'A'.charCodeAt(0)].classList.add("occupied");
         }
 
-    })))
+    })));
     markHits(game.opponentsBoard, "opponent", "You won the game");
     markHits(game.playersBoard, "player", "You lost the game");
 }
@@ -100,7 +100,7 @@ function cellClick() {
     else if (sonarAttempt) {
         // once we know we are using the sonar, we can switch it back to false for later use
         sonarAttempt = false;
-        sendXhr("POST", "/sonar", {game: game, x: row, y: col, numSonars: numSonars}, function(data)) {
+        sendXhr("POST", "/sonarPulseAttack", {game: game, x: row, y: col, numSonars: numSonars}, function(data)) {
             numSonars--;
             game = data;
             redrawGrid();
