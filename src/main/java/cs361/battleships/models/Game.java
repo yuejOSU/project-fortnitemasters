@@ -62,4 +62,8 @@ public class Game {
     private boolean randVertical() {
         return new Random().nextBoolean();
     }
+
+    public boolean sonarPulseAttack(int x, char y, boolean sonarPulse) {
+        return true;
+    }
 }
