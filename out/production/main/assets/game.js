@@ -3,8 +3,6 @@ var placedShips = 0;
 var game;
 var shipType;
 var vertical;
-var sonarAttempt = false;
-var numSonars = 2;
 
 function makeGrid(table, isPlayer) {
     for (i=0; i<10; i++) {
@@ -29,10 +27,6 @@ function markHits(board, elementId, surrenderText) {
             className = "hit"
         else if (attack.result === "SURRENDER")
             alert(surrenderText);
-        else if (attack.result === "EMPTY")
-            className = "sonar-free";
-        else if (attack.result === "OCCUPIED")
-            className = "sonar-occupied";
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
 }
@@ -49,19 +43,6 @@ function redrawGrid() {
     game.playersBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => {
         document.getElementById("player").rows[square.row-1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
     }));
-    // in addition to drawing occupied ships on board, we need to account for sonar squares (basically copy)
-    game.opponentsBoard.forEach((square) => {
-        document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) = 'A'.charCodeAt(0)].classList.add("gray");
-    });
-    // looks within the sonar squares and sees if there are any occupied squares
-    game.opponentsBoard.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
-        // if there really is an occupied square, we remove the gray color and add the CSS listed color for "occupied"
-        if(square.row == sonar.row && (square.column.charCodeAt(0) == sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
-            document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) = 'A'.charCodeAt(0)].classList.remove("gray");
-            document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) = 'A'.charCodeAt(0)].classList.add("occupied");
-        }
-
-    })))
     markHits(game.opponentsBoard, "opponent", "You won the game");
     markHits(game.playersBoard, "player", "You lost the game");
 }
@@ -81,8 +62,6 @@ function registerCellListener(f) {
     oldListener = f;
 }
 
-
-
 function cellClick() {
     let row = this.parentNode.rowIndex + 1;
     let col = String.fromCharCode(this.cellIndex + 65);
@@ -96,62 +75,12 @@ function cellClick() {
                 registerCellListener((e) => {});
             }
         });
-    }
-    else if (sonarAttempt) {
-        // once we know we are using the sonar, we can switch it back to false for later use
-        sonarAttempt = false;
-        sendXhr("POST", "/sonar", {game: game, x: row, y: col, numSonars: numSonars}, function(data)) {
-            numSonars--;
-            game = data;
-            redrawGrid();
-        }
-    }
-    else {
+    } else {
         sendMiss("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
             redrawGrid();
         })
     }
-}
-
-function sonarPulse() {
-
-    return function() {
-
-        let row = this.parentNode.rowIndex;
-        let col = this.cellIndex;
-        let r = 2;
-        let grid = document.getElementById("opponent");
-        let cells = [];
-        let i = 0;
-
-        // for loop to create the circular shape for the sonar weapon
-        for(i; i <= r; i++) {
-            if(grid.rows[row + i] !== undefined) {
-                cells.push(table.rows[row + i].cells[col]);
-            }
-            if(grid.rows[row - i] !== undefined) {
-                cells.push(table.rows[row + i].cells[col]);
-            }
-            if(grid.rows[row + 1] !== undefined) {
-                cells.push(table.rows[row + 1].cells[col - 1]);
-                cells.push(table.rows[row + 1].cells[col + 1]);
-            }
-            if(grid.rows[row - 1] !== undefined) {
-                cells.push(table.rows[row - 1].cells[col - 1]);
-                cells.push(table.rows[row - 1].cells[col - 1]);
-            }
-            // toggles hiding and showing cells
-            cells.forEach(function(e) {
-                if(e !== undefined) {
-                    e.classList.toggle("placed");
-                }
-            });
-            sonarAttempt = true;
-        }
-
-    }
-
 }
 
 function sendXhr(method, url, data, handler) {
