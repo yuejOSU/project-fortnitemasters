@@ -170,7 +170,7 @@ public class ShipTest {
         Ship minesweeper = new Ship("MINESWEEPER");
         minesweeper.place('A', 1, true);
         var result = minesweeper.attack(1, 'A');
-        assertEquals(AtackStatus.SUNK, result.getResult());
+        assertEquals(AtackStatus.HIT, result.getResult());
     }
 
 }
