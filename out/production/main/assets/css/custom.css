@@ -96,16 +96,10 @@ td:hover {
    height:30px;
 
 }
-
-.gray {
-  background-color: gray;
-}
-
 #sonar_button{
     width: 30px;
     height: 30px;
 }
-
 body {
     background-color: #F28216;
 }
@@ -124,5 +118,3 @@ table#player.battleGrid{
 ~h1 {
     background-color: aqua;
 }
-
-
