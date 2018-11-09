@@ -164,8 +164,7 @@ public class ShipTest {
         assertTrue(minesweeper1.equals(minesweeper2));
         assertEquals(minesweeper1.hashCode(), minesweeper2.hashCode());
     }
-}
-
+    
     @Test
     public void testHitCaptainsQuarters() {
         Ship minesweeper = new Ship("MINESWEEPER");
@@ -173,4 +172,7 @@ public class ShipTest {
         var result = minesweeper.attack(1, 'A');
         assertEquals(AtackStatus.SUNK, result.getResult());
     }
+}
+
+
 }
