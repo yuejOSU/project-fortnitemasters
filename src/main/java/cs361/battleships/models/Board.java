@@ -40,6 +40,7 @@ public class Board {
 			return false;
 		}
 		ships.add(placedShip);
+		ship.setCaptainsQuarters(x, y, isVertical);
 		return true;
 	}
 
