@@ -38,5 +38,5 @@ public enum AtackStatus {
 	/**
 	 * The result if the captains quarter is hit and ship has armor
 	 */
-	CQHIT,
+
 }
