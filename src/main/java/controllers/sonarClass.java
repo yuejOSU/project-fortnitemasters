@@ -21,12 +21,12 @@ public class sonarClass {
         return game;
     }
 
-    public int getActionRow()
+    public int getRow()
     {
         return x;
     }
 
-    public char getActionColumn()
+    public char getColumn()
     {
         return y;
     }
