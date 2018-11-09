@@ -28,5 +28,8 @@ public class destroyer extends Ship {
             }
             this.captainsQuarters = new Square(row, col.charAt(1 + x));
         }
+        Armor armor = new Armor();
+        armor.setArmor(2);
+        this.armor = armor;
     }
 }
