@@ -4,6 +4,7 @@ var game;
 var shipType;
 var vertical;
 
+
 function makeGrid(table, isPlayer) {
     for (i=0; i<10; i++) {
         let row = document.createElement('tr');
@@ -15,6 +16,8 @@ function makeGrid(table, isPlayer) {
         table.appendChild(row);
     }
 }
+
+
 
 function markHits(board, elementId, surrenderText) {
     board.attacks.forEach((attack) => {
@@ -101,7 +104,6 @@ function sendXhr(method, url, data, handler) {
     req.send(JSON.stringify(data));
 }
 //test
-
 function sendErr(method, url, data, handler) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function(event) {
