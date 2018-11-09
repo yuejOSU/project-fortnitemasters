@@ -13,4 +13,12 @@ public class minesweeper extends Ship {
         }
 
     }
+
+    public void setCaptainsQuarters(int row, char column, boolean vertical){
+        this.captainsQuarters = new Square(row, column);
+        Armor armor = new Armor();
+        armor.setArmor(0);
+        this.armor = armor;
+
+    }
 }
