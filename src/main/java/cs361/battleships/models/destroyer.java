@@ -18,7 +18,7 @@ public class destroyer extends Ship {
         String col = "ABCDEFGHIJ";
         int x = 0;
         if (vertical == true) {
-            this.captainsQuarters = new Square(row + 2, column);
+            this.captainsQuarters = new Square(row + 1, column);
         } else {
             for (int i = 0; i < col.length(); i++) {
                 if (col.charAt(i) == column) {

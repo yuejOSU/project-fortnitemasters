@@ -63,6 +63,10 @@ td:hover {
     font-weight: bold;
 }
 
+.cqhit {
+     background-color: green;
+ }
+
 .container p2{
     margin-left: 1300px;
     margin-right: 1425px;

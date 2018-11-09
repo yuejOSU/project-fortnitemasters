@@ -63,6 +63,8 @@ public class Ship {
 		return getOccupiedSquares().stream().anyMatch(s -> s.equals(location));
 	}
 
+	public void setCaptainsQuarters(int x, char y, boolean b) {}
+
 	public Square getCaptainsQuarters() {
 		return this.captainsQuarters;
 	}
@@ -141,4 +143,8 @@ public class Ship {
 	public String toString() {
 		return kind + occupiedSquares.toString();
 	}
+
+
 }
+
+
