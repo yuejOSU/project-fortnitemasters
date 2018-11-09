@@ -6,6 +6,7 @@ var vertical;
 var sonarAttempt = false;
 var numSonars = 2;
 
+
 function makeGrid(table, isPlayer) {
     for (i=0; i<10; i++) {
         let row = document.createElement('tr');
@@ -18,6 +19,8 @@ function makeGrid(table, isPlayer) {
     }
 }
 
+
+
 function markHits(board, elementId, surrenderText) {
     board.attacks.forEach((attack) => {
         let className;
@@ -26,12 +29,14 @@ function markHits(board, elementId, surrenderText) {
         else if (attack.result === "HIT")
             className = "hit";
         else if (attack.result === "SUNK")
-            className = "sunk";
-        else if (attack.result == "CQHIT")
-            className = "cqhit";
+            className = "hit";
         else if (attack.result === "SURRENDER")
             alert(surrenderText);
-        document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
+        /*else if (attack.result === "EMPTY")
+            className = "sonar-free";
+        else if (attack.result === "OCCUPIED")
+            className = "sonar-occupied";
+        document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);*/
     });
 }
 
@@ -48,11 +53,11 @@ function redrawGrid() {
         document.getElementById("player").rows[square.row-1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
     }));
     // in addition to drawing occupied ships on board, we need to account for sonar squares (basically copy)
-    game.opponentsBoard.sonars.forEach((square) => {
-        document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) = 'A'.charCodeAt(0)].classList.add("gray");
+    game.opponentsBoard.forEach((square) => {
+        document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("gray");
     });
     // looks within the sonar squares and sees if there are any occupied squares
-    game.opponentsBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
+    game.opponentsBoard.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
         // if there really is an occupied square, we remove the gray color and add the CSS listed color for "occupied"
         if(square.row == sonar.row && (square.column.charCodeAt(0) - 'A'.charCodeAt(0)) == (sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
             document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.remove("gray");
@@ -98,7 +103,7 @@ function cellClick() {
     else if (sonarAttempt) {
         // once we know we are using the sonar, we can switch it back to false for later use
         sonarAttempt = false;
-        sendXhr2("POST", "/sonarPulse", {game: game, x: row, y: col, numSonars: numSonars}, function(data) {
+        sendXhr2("POST", "/sonar", {game: game, x: row, y: col, numSonars: numSonars}, function(data) {
             numSonars--;
             game = data;
             redrawGrid();
@@ -112,7 +117,7 @@ function cellClick() {
     }
 }
 
-function sonarPulse() {
+function sonar() {
 
     return function() {
 
@@ -126,21 +131,21 @@ function sonarPulse() {
         // for loop to create the circular shape for the sonar weapon
         for(i; i <= r; i++) {
             if(grid.rows[row + i] !== undefined) {
-                cells.push(grid.rows[row + i].cells[col]);
+                cells.push(table.rows[row + i].cells[col]);
             }
             if(grid.rows[row - i] !== undefined) {
-                cells.push(grid.rows[row + i].cells[col]);
+                cells.push(table.rows[row + i].cells[col]);
             }
             if(grid.rows[row + 1] !== undefined) {
-                cells.push(grid.rows[row + 1].cells[col - 1]);
-                cells.push(grid.rows[row + 1].cells[col + 1]);
+                cells.push(table.rows[row + 1].cells[col - 1]);
+                cells.push(table.rows[row + 1].cells[col + 1]);
             }
             if(grid.rows[row - 1] !== undefined) {
-                cells.push(grid.rows[row - 1].cells[col - 1]);
-                cells.push(grid.rows[row - 1].cells[col - 1]);
+                cells.push(table.rows[row - 1].cells[col - 1]);
+                cells.push(table.rows[row - 1].cells[col - 1]);
             }
-            cells.push(grid.rows[row].cells[col - i]);
-            cells.push(grid.rows[row].cells[col + i]);
+            cells.push(table.rows[row].cells[col - i]);
+            cells.push(table.rows[row].cells[col + i]);
 
             // toggles hiding and showing cells
             cells.forEach(function(e) {
@@ -168,11 +173,11 @@ function sendXhr(method, url, data, handler) {
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(data));
 }
-//test
 
 function sendXhr2(method, url, data, handler) {
+
     var req = new XMLHttpRequest();
-    req.addEventListener("load", function (event) {
+    req.addEventListener("load", function(event) {
         if (req.status != 200) {
             redrawGrid();
         }
@@ -184,6 +189,7 @@ function sendXhr2(method, url, data, handler) {
 
 }
 
+//test
 function sendErr(method, url, data, handler) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function(event) {
@@ -255,7 +261,7 @@ function initGame() {
        registerCellListener(place(4), "player");
     });
     document.getElementById("SONAR").addEventListener("click", function(e) {
-        registerCellListener(sonarPulse(), "opponent");
+        registerCellListener(sonar(), "opponent");
     });
     sendErr("GET", "/game", {}, function(data) {
         game = data;

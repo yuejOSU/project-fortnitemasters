@@ -24,7 +24,7 @@ public class Board {
 		this.numSonars = 2;
 		ships = new ArrayList<>();
 		attacks = new ArrayList<>();
-		sonars = new ArrayList<>();
+		this.sonars = new ArrayList<>();
 	}
 
 	/*
@@ -80,7 +80,7 @@ public class Board {
 		return attackResult;
 	}
 
-	public boolean sonarResult(int x, char y, int numSonars) {
+	public boolean sonar(int x, char y, int numSonars) {
 
 		// conditional to return false if all sonars are used or no ships have been sunk
 		if(!ifSonar() || numSonars == 0) {
