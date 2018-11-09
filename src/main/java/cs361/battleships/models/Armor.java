@@ -6,12 +6,12 @@ public class Armor {
 
         private int armor;
 
-        public int getArmor(){
+        public int getArmor(){                  //Getter method
 
             return armor;
         }
 
-        public void setArmor(int armor){
+        public void setArmor(int armor){        //Setter method
             this.armor = armor;
         }
 
