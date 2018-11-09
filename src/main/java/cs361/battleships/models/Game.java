@@ -66,4 +66,5 @@ public class Game {
     public boolean sonarPulseAttack(int x, char y, int sonarPulse) {
         return opponentsBoard.sonar(x, y, sonarPulse);
     }
+  
 }
