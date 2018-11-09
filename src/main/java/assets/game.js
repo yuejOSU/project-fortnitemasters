@@ -32,11 +32,8 @@ function markHits(board, elementId, surrenderText) {
             className = "hit";
         else if (attack.result === "SURRENDER")
             alert(surrenderText);
-        /*else if (attack.result === "EMPTY")
-            className = "sonar-free";
-        else if (attack.result === "OCCUPIED")
-            className = "sonar-occupied";
-        document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);*/
+
+        document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
 }
 
@@ -53,11 +50,11 @@ function redrawGrid() {
         document.getElementById("player").rows[square.row-1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
     }));
     // in addition to drawing occupied ships on board, we need to account for sonar squares (basically copy)
-    game.opponentsBoard.forEach((square) => {
+    game.opponentsBoard.sonars.forEach((square) => {
         document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("gray");
     });
     // looks within the sonar squares and sees if there are any occupied squares
-    game.opponentsBoard.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
+    game.opponentsBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
         // if there really is an occupied square, we remove the gray color and add the CSS listed color for "occupied"
         if(square.row == sonar.row && (square.column.charCodeAt(0) - 'A'.charCodeAt(0)) == (sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
             document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.remove("gray");
