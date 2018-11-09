@@ -63,7 +63,7 @@ public class Game {
         return new Random().nextBoolean();
     }
 
-    public boolean sonarPulseAttack(int x, char y, boolean sonarPulse) {
+    public boolean sonarPulseAttack(int x, char y, int sonarPulse) {
         //return opponentsBoard.sonar(x, y, numSonars);\
         return true;
     }

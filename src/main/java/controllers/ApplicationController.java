@@ -32,12 +32,17 @@ public class ApplicationController {
 
     public Result attack(Context context, AttackGameAction g) {
         Game game = g.getGame();
-        boolean result;
+        boolean result = game.attack(g.getActionRow(), g.getActionColumn());
+        if (result) {
+            return Results.json().render(game);
+        } else {
+            return Results.badRequest();
+        }
+    }
 
-        if(g.getSonarPulse())//if they choose to use sonar conditional ti check is here
-            result = game.sonarPulseAttack(g.getActionRow(), g.getActionColumn(), g.getSonarPulse());
-        else
-                result = game.attack(g.getActionRow(), g.getActionColumn());
+    public Result sonar(Context context, sonarClass g) {
+        Game game = g.getGame();
+        boolean result = game.sonarPulseAttack(g.getRow(), g.getColumn(), g.getsonarCount());
         if (result) {
             return Results.json().render(game);
         } else {
