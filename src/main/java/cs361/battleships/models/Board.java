@@ -10,6 +10,8 @@ public class Board {
 
 	@JsonProperty private List<Ship> ships;
 	@JsonProperty private List<Result> attacks;
+	@JsonProperty private List<Square> sonars;
+	private int numSonars;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
