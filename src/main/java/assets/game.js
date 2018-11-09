@@ -131,21 +131,21 @@ function sonar() {
         // for loop to create the circular shape for the sonar weapon
         for(i; i <= r; i++) {
             if(grid.rows[row + i] !== undefined) {
-                cells.push(table.rows[row + i].cells[col]);
+                cells.push(grid.rows[row + i].cells[col]);
             }
             if(grid.rows[row - i] !== undefined) {
-                cells.push(table.rows[row + i].cells[col]);
+                cells.push(grid.rows[row + i].cells[col]);
             }
             if(grid.rows[row + 1] !== undefined) {
-                cells.push(table.rows[row + 1].cells[col - 1]);
-                cells.push(table.rows[row + 1].cells[col + 1]);
+                cells.push(grid.rows[row + 1].cells[col - 1]);
+                cells.push(grid.rows[row + 1].cells[col + 1]);
             }
             if(grid.rows[row - 1] !== undefined) {
-                cells.push(table.rows[row - 1].cells[col - 1]);
-                cells.push(table.rows[row - 1].cells[col - 1]);
+                cells.push(grid.rows[row - 1].cells[col - 1]);
+                cells.push(grid.rows[row - 1].cells[col - 1]);
             }
-            cells.push(table.rows[row].cells[col - i]);
-            cells.push(table.rows[row].cells[col + i]);
+            cells.push(grid.rows[row].cells[col - i]);
+            cells.push(grid.rows[row].cells[col + i]);
 
             // toggles hiding and showing cells
             cells.forEach(function(e) {
