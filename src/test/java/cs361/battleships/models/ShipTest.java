@@ -164,4 +164,8 @@ public class ShipTest {
         assertTrue(minesweeper1.equals(minesweeper2));
         assertEquals(minesweeper1.hashCode(), minesweeper2.hashCode());
     }
+
+
+
+
 }

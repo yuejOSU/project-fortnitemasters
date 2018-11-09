@@ -23,6 +23,8 @@ public enum AtackStatus {
 	 */
 	SURRENDER,
 
+	CQHIT,
+
 	/**
 	 * The result if the coordinates given are invalid.
 	 */
