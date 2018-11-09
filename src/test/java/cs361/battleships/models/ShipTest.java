@@ -165,13 +165,6 @@ public class ShipTest {
         assertEquals(minesweeper1.hashCode(), minesweeper2.hashCode());
     }
 
-    @Test
-    public void testHitCQ() {
-        Ship minesweeper = new Ship("MINESWEEPER");
-        minesweeper.place('A', 1, true);
-        var result = minesweeper.attack(1, 'A');
-        assertEquals(AtackStatus.SUNK, result.getResult());
-    }
 
 
 
