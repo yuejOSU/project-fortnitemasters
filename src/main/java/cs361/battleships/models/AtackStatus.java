@@ -29,6 +29,7 @@ public enum AtackStatus {
 	 * The result if the coordinates given are invalid.
 	 */
 	INVALID,
+<<<<<<< HEAD
 	/**
 	 * The result if the coordinates given are Empty.
 	 */
@@ -40,5 +41,7 @@ public enum AtackStatus {
 	/**
 	 * The result if the captains quarter is hit and ship has armor
 	 */
+=======
+>>>>>>> finished sonar, but needs debugging, always pulls up alert regardless of attack or sonar
 
 }
