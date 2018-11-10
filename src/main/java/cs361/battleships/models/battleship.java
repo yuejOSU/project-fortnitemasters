@@ -28,5 +28,10 @@ public class battleship extends Ship {
             }
             this.captainsQuarters = new Square(row, col.charAt(2 + x));
         }
+
+        Armor armor = new Armor();
+        armor.setArmor(2);
+        this.armor = armor;
     }
+
 }

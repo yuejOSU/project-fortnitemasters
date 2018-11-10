@@ -44,6 +44,13 @@ public class BoardTest {
     }
 
     @Test
+    public void testSonar() {
+        Board board = new Board();
+        assertFalse(board.sonarResult(5, 'c', 2));
+        assertFalse(board.sonarResult(5, 'c', 0));
+    }
+
+    @Test
     public void testAttackSameSquareMultipleTimes() {
         Ship minesweeper = new Ship("MINESWEEPER");
         board.placeShip(minesweeper, 1, 'A', true);

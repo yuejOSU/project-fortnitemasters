@@ -15,7 +15,7 @@ public class Ship {
 	@JsonProperty protected String kind;
 	@JsonProperty protected List<Square> occupiedSquares;
 	@JsonProperty protected int size;
-	@JsonProperty protected int shield;
+	@JsonProperty protected Armor armor;
 	@JsonProperty protected Square captainsQuarters;
 
 	public Ship() {
@@ -73,20 +73,20 @@ public class Ship {
 		return kind;
 	}
 
-	public void setShield() {
-		this.shield = 2;
+	public void setArmor() {
+		this.armor = armor;
 	}
 
-	public int getShield() {
-        return shield;
+	public Armor getArmor() {
+        return this.armor;
     }
 
 	public void hitCQ() {
-		this.shield--;
+		this.armor.setArmor(this.armor.getArmor() -1);
 	}
 
 	public boolean sunkCQ() {
-		if (this.getShield() <= 0) {
+		if (this.armor.getArmor() <= 0) {
 			return false;
 		}
 		else {
