@@ -17,8 +17,6 @@ public class Board {
 	private int rows;
 	private int cols;
 	private int numSonars;
-	private int rows;
-	private int cols;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
@@ -59,9 +57,24 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Result attack(int x, char y) {
-		Result attackResult = attack(new Square(x, y));
-		attacks.add(attackResult);
-		return attackResult;
+
+		Result result = new Result();
+
+		// check for attack result in bounds of grid
+		if (x < 1 || x > 10 || y < 'A' || y > 'J') {
+			result.setResult(AtackStatus.INVALID);
+			return result;
+		}
+
+		// check to see if attack location has been chosen before
+		for (Result allResults: this.attacks) {
+			if ((allResults.getLocation().getColumn() == y) && (allResults.getLocation().getRow() == x)) {
+				result.setResult(AtackStatus.INVALID);
+				return result;
+			}
+		}
+
+		return result;
 	}
 
 	public boolean sonar(int x, char y, int numSonars) {
