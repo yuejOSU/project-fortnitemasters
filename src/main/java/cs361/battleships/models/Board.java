@@ -8,9 +8,12 @@ import java.util.stream.Collectors;
 
 public class Board {
 
-	@JsonProperty private List<Ship> ships;
-	@JsonProperty private List<Result> attacks;
-	@JsonProperty private List<Square> sonars;
+	@JsonProperty
+	private List<Ship> ships;
+	@JsonProperty
+	private List<Result> attacks;
+	@JsonProperty
+	private List<Square> sonars;
 	private int rows;
 	private int cols;
 	private int numSonars;
@@ -64,7 +67,7 @@ public class Board {
 	public boolean sonar(int x, char y, int numSonars) {
 
 		// conditional to return false if all sonars are used or no ships have been sunk
-		if(!ifSonar() || numSonars == 0) {
+		if (!ifSonar() || numSonars == 0) {
 			return false;
 		}
 
@@ -74,22 +77,22 @@ public class Board {
 		List<Square> squares = new ArrayList<>();
 
 		// loop to create the radius for the sonar just like in 'game.js'
-		for(i = 0; i < (r + 1); i++) {
+		for (i = 0; i < (r + 1); i++) {
 			squares.add(new Square((x - i), y));
 			squares.add(new Square((x + i), y));
 			// typecasting is need for the rest of these because we cannot pass in 'int' for function
-			squares.add(new Square(x, (char)((int)y - i)));
-			squares.add(new Square(x, (char)((int)y + i)));
-			squares.add(new Square((x - 1), (char)((int) y - 1)));
-			squares.add(new Square((x - 1), (char)((int) y + 1)));
-			squares.add(new Square((x + 1), (char)((int) y - 1)));
-			squares.add(new Square((x + 1), (char)((int) y + 1)));
+			squares.add(new Square(x, (char) ((int) y - i)));
+			squares.add(new Square(x, (char) ((int) y + i)));
+			squares.add(new Square((x - 1), (char) ((int) y - 1)));
+			squares.add(new Square((x - 1), (char) ((int) y + 1)));
+			squares.add(new Square((x + 1), (char) ((int) y - 1)));
+			squares.add(new Square((x + 1), (char) ((int) y + 1)));
 		}
 
-		for (Square square: squares) {
+		for (Square square : squares) {
 			// this adds the squares that the sonar is used on; if there are square that aren't on the board, then
 			// we just ignore it, but if it is in it, then we add it to sonar list
-			if(square.getRow() <= this.rows && square.getRow() > 0 && ((int)square.getColumn() - 65) < this.cols && ((int)square.getColumn() - 65) >= 0) {
+			if (square.getRow() <= this.rows && square.getRow() > 0 && ((int) square.getColumn() - 65) < this.cols && ((int) square.getColumn() - 65) >= 0) {
 				this.sonars.add(square);
 			}
 		}
@@ -101,8 +104,8 @@ public class Board {
 	private boolean ifSonar() {
 
 		// checks to see if any ships have been sunk in order to use the sonar weapon
-		for (Result r: this.attacks) {
-			if(r.getResult() == AtackStatus.SUNK) {
+		for (Result r : this.attacks) {
+			if (r.getResult() == AtackStatus.SUNK) {
 				return true;
 			}
 		}
@@ -126,3 +129,4 @@ public class Board {
 	public int getCols() {
 		return this.cols;
 	}
+}
