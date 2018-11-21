@@ -49,19 +49,33 @@ function redrawGrid() {
     game.playersBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => {
         document.getElementById("player").rows[square.row-1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
     }));
+
+
     // in addition to drawing occupied ships on board, we need to account for sonar squares (basically copy)
+<<<<<<< HEAD
     game.opponentsBoard.sonars.forEach((square) => {
+=======
+    game.opponentsBoard.forEach((square) => {
+>>>>>>> baad8e3533a5472e3f82fe0657c80976b5dfc5bf
         document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("gray");
     });
+
     // looks within the sonar squares and sees if there are any occupied squares
     game.opponentsBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
         // if there really is an occupied square, we remove the gray color and add the CSS listed color for "occupied"
+<<<<<<< HEAD
         if(square.row == sonar.row && (square.column.charCodeAt(0) - 'A'.charCodeAt(0)) == (sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
+=======
+        if(square.row == sonar.row && (square.column.charCodeAt(0) == sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
+>>>>>>> baad8e3533a5472e3f82fe0657c80976b5dfc5bf
             document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.remove("gray");
             document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
         }
 
+
     })));
+
+
     markHits(game.opponentsBoard, "opponent", "You won the game");
     markHits(game.playersBoard, "player", "You lost the game");
 }
@@ -97,6 +111,7 @@ function cellClick() {
             }
         });
     }
+    /*
     else if (sonarAttempt) {
         // once we know we are using the sonar, we can switch it back to false for later use
         sonarAttempt = false;
@@ -106,6 +121,7 @@ function cellClick() {
             redrawGrid();
         });
     }
+    */
     else {
         sendMiss("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
@@ -156,6 +172,8 @@ function sonar() {
     }
 
 }
+
+
 
 function sendXhr(method, url, data, handler) {
     var req = new XMLHttpRequest();
