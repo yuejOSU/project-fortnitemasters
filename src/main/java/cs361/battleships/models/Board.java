@@ -74,6 +74,25 @@ public class Board {
 			}
 		}
 
+		this.attacks.add(result);
+
+		for (Ship ships: this.ships) {
+			List<Square> taken = ships.getOccupiedSquares();
+
+			for (Square occupied : taken) {
+				if ((occupied.getRow() == x) && (occupied.getColumn() == y)) {
+					result.setResult(AtackStatus.HIT);
+					result.setLocation(occupied);
+					return result;
+				}
+				else {
+					Square square = new Square(x,y);
+					result.setLocation(square);
+					result.setResult(AtackStatus.MISS);
+				}
+			}
+		}
+
 		return result;
 	}
 
