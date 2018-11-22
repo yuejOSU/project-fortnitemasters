@@ -43,12 +43,12 @@ public class BoardTest {
         assertEquals(minesweeper, result.getShip());
     }
 
-    @Test
+    /*@Test
     public void testSonar() {
         Board board = new Board();
         assertFalse(board.sonarResult(5, 'c', 2));
         assertFalse(board.sonarResult(5, 'c', 0));
-    }
+    }*/
 
     @Test
     public void testAttackSameSquareMultipleTimes() {

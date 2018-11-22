@@ -101,7 +101,6 @@ function cellClick() {
             }
         });
     }
-    /*
     else if (sonarAttempt) {
         // once we know we are using the sonar, we can switch it back to false for later use
         sonarAttempt = false;
@@ -111,7 +110,6 @@ function cellClick() {
             redrawGrid();
         });
     }
-    */
     else {
         sendMiss("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
