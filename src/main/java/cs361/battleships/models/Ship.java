@@ -17,6 +17,7 @@ public class Ship {
 	@JsonProperty protected int size;
 	@JsonProperty protected Armor armor;
 	@JsonProperty protected Square captainsQuarters;
+	protected boolean underwater;
 
 	public Ship() {
 		occupiedSquares = new ArrayList<>();
@@ -144,7 +145,16 @@ public class Ship {
 		return kind + occupiedSquares.toString();
 	}
 
+	public boolean getUnderwater(){
+		return underwater;
+	}
+	public void setUnderwater(){
+		underwater = true;
+	}
 
+	public int getSize(){
+		return size;
+	}
 }
 
 
