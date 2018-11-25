@@ -13,6 +13,7 @@ public class Board {
 	@JsonProperty private List<Square> sonars;
 	private int numSonars;
 	private int rows;
+
 	private int cols;
 
 	/*
