@@ -8,6 +8,7 @@ public class destroyer extends Ship {
         this.occupiedSquares = new ArrayList<Square>(); // constructs list
         this.kind = "DESTROYER"; // sets kind equal to what was passed in
 
+
         for (int i=0; i<3; i++) {
             this.occupiedSquares.add(new Square(0, 'A'));
         }
