@@ -33,7 +33,12 @@ public class Result {
 		this.ship = ship;
 	}
 
-	public Square getLocation() {
+	public Square getLocation()
+	{
 		return location;
+	}
+
+	public void setLocation(Square square) {
+		this.location = square;
 	}
 }
