@@ -152,6 +152,9 @@ public class Ship {
 		underwater = true;
 	}
 
+	public int getSize(){
+		return size;
+	}
 }
 
 
