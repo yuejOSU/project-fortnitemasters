@@ -13,6 +13,14 @@ public class Game {
     @JsonProperty private Board playersBoard = new Board();
     @JsonProperty private Board opponentsBoard = new Board();
 
+    public boolean placeNewShip(Ship ship, int x, char y, boolean isVertical, boolean isSubmerged) {
+        boolean placed;
+        //placed = playersBoard.placeNewShip(ship, x, y, isVertical, isSubmerged);
+        //if (!placed){
+
+        //}
+        return true;
+    }
     /*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
