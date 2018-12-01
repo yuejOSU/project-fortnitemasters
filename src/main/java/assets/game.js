@@ -130,22 +130,24 @@ function sonar() {
 
         // for loop to create the circular shape for the sonar weapon
         for(let i = 0; i <= r; i++) {
-            if(grid.rows[row + i] !== undefined) {
+            if (grid.rows[row + i] !== undefined) {
                 cells.push(grid.rows[row + i].cells[col]);
             }
-            if(grid.rows[row - i] !== undefined) {
-                cells.push(grid.rows[row + i].cells[col]);
+            if (grid.rows[row - i] !== undefined) {
+                cells.push(grid.rows[row - i].cells[col]);
             }
-            if(grid.rows[row + 1] !== undefined) {
+            if (grid.rows[row + 1] !== undefined) {
                 cells.push(grid.rows[row + 1].cells[col - 1]);
                 cells.push(grid.rows[row + 1].cells[col + 1]);
             }
-            if(grid.rows[row - 1] !== undefined) {
+            if (grid.rows[row - 1] !== undefined) {
                 cells.push(grid.rows[row - 1].cells[col - 1]);
-                cells.push(grid.rows[row - 1].cells[col - 1]);
+                cells.push(grid.rows[row - 1].cells[col + 1]);
             }
+            cells.push(grid.rows[row].cells[col]);
             cells.push(grid.rows[row].cells[col - i]);
             cells.push(grid.rows[row].cells[col + i]);
+        }
 
             // toggles hiding and showing cells
             cells.forEach(function(e) {
@@ -154,7 +156,6 @@ function sonar() {
                 }
             });
             sonarAttempt = true;
-        }
 
     }
 
