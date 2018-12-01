@@ -19,7 +19,7 @@ public class ShipTest {
         expected.add(new Square(1, 'B'));
         assertEquals(expected, occupiedSquares);
     }
-
+/*
     @Test
     public void testPlaceSubmarineHorizontaly() {
         Ship submarine = new Ship("SUBMARINE");
@@ -47,7 +47,7 @@ public class ShipTest {
         expected.add(new Square(5, 'A'));
         assertEquals(expected, occupiedSquares);
     }
-
+*/
     @Test
     public void testPlaceMinesweeperVertically() {
         Ship minesweeper = new Ship("MINESWEEPER");
