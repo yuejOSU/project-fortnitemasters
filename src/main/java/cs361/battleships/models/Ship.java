@@ -148,6 +148,7 @@ public class Ship {
 	public boolean getUnderwater(){
 		return underwater;
 	}
+
 	public void setUnderwater(){
 		underwater = true;
 	}
