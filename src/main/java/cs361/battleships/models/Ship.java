@@ -88,7 +88,7 @@ public class Ship {
 		return getOccupiedSquares().stream().anyMatch(s -> s.equals(location));
 	}
 
-	public void setCaptainsQuarters(int x, char y, boolean b) {}
+	//public void setCaptainsQuarters(int x, char y, boolean b) {}
 
 	public Square getCaptainsQuarters() {
 		return this.captainsQuarters;
@@ -97,7 +97,7 @@ public class Ship {
 	public String getKind() {
 		return this.kind;
 	}
-
+/*
 	public void setArmor() {
 		this.armor = armor;
 	}
@@ -118,7 +118,7 @@ public class Ship {
 			return true;
 		}
 	}
-
+*/
 	public Result attack(int x, char y) {
 		var attackedLocation = new Square(x, y);
 		var square = getOccupiedSquares().stream().filter(s -> s.equals(attackedLocation)).findFirst();

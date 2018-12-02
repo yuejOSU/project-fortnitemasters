@@ -9,7 +9,7 @@ public class submarine extends Ship{
         this.kind = "SUBMARINE"; // initialize the ship type
         this.underwater = false; // initially will be false
         for (int i=0; i<5; i++) {
-            this.occupiedSquares.add(new Square(0, 'A'));
+            this.occupiedSquares.add(new Square(0, (char)('A'+1)));
         }
     }
 }
