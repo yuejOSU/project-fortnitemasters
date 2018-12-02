@@ -14,26 +14,26 @@ public class sonarClass {
     private char y;
 
     @JsonProperty
-    private int sonarCount;
+    private int numSonars;
 
     public Game getGame()
     {
         return game;
     }
 
-    public int getRow()
+    public int getActionRow()
     {
         return x;
     }
 
-    public char getColumn()
+    public char getActionColumn()
     {
         return y;
     }
 
-    public int getsonarCount()
+    public int getSonarCount()
     {
-        return sonarCount;
+        return numSonars;
     }
 }
 
