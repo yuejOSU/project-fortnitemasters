@@ -14,10 +14,9 @@ public class Board {
 	private List<Result> attacks;
 	@JsonProperty
 	private List<Square> sonars;
-	//private List<Result> sonars;
 	private int rows;
 	private int cols;
-	//private int numSonars;
+	private int numSonars;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
@@ -25,7 +24,7 @@ public class Board {
 	public Board() {
 		rows = 10;
 		cols = 10;
-		//numSonars = 2;
+		numSonars = 2;
 		ships = new ArrayList<>();
 		attacks = new ArrayList<>();
 		sonars = new ArrayList<>();
@@ -134,26 +133,7 @@ public class Board {
 			}
 		}
 
-		Result result = new Result();
-
-		for (Ship ships: this.ships) {
-			List<Square> taken = ships.getOccupiedSquares();
-
-			for (Square sonar: this.sonars) {
-				for (Square occupied : taken) {
-					if ((occupied.getRow() == sonar.getRow()) && (occupied.getColumn() == sonar.getColumn())) {
-						result.setResult(AtackStatus.HIT);
-						result.setLocation(occupied);
-					} else {
-						Square square = new Square(x, y);
-						result.setLocation(square);
-						result.setResult(AtackStatus.MISS);
-					}
-				}
-			}
-		}
-
-		//this.numSonars--;
+		this.numSonars--;
 
 		return true;
 
@@ -188,7 +168,7 @@ public class Board {
 		return this.cols;
 	}
 
-	/*public int getNumSonars() {
+	public int getNumSonars() {
 		return this.numSonars;
-	}*/
+	}
 }
