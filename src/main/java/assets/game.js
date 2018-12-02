@@ -107,7 +107,7 @@ function cellClick() {
         sendXhr2("POST", "/sonar", {game: game, x: row, y: col, numSonars: numSonars}, function(data) {
             numSonars--;
             game = data;
-            redrawGrid();
+            redrawGrid()
         });
     }
     else {
