@@ -51,6 +51,20 @@ public class BoardTest {
     }
 
     @Test
+    public void testSonarIsOccupiedTrue(){
+        Ship minesweeper = new Ship("MINESWEEPER");
+        board.placeShip(minesweeper, 1, 'A', true);
+        assertFalse(board.sonar(5, 'E', 2));
+
+    }
+
+    @Test
+    public void testSonarIsOccupiedTrue2(){
+        Ship destroyer = new Ship("DESTROYER");
+        board.placeShip(destroyer, 1, 'A', true);
+        assertFalse(board.sonar(5, 'E', 2));
+    }
+    @Test
     public void testAttackSameSquareMultipleTimes() {
         Ship minesweeper = new Ship("MINESWEEPER");
         board.placeShip(minesweeper, 1, 'A', true);
