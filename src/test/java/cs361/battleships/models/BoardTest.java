@@ -33,15 +33,13 @@ public class BoardTest {
         assertEquals(AtackStatus.MISS, result.getResult());
     }
 
-    /*@Test
+    @Test
     public void testAttackShip() {
         Ship minesweeper = new Ship("MINESWEEPER");
         board.placeShip(minesweeper, 1, 'A', true);
-        minesweeper = board.getShips().get(0);
         Result result = board.attack(1, 'A');
         assertEquals(AtackStatus.HIT, result.getResult());
-        assertEquals(minesweeper, result.getShip());
-    }*/
+    }
 
     @Test
     public void testSonar() {
@@ -59,19 +57,38 @@ public class BoardTest {
         assertEquals(AtackStatus.INVALID, result.getResult());
     }
 
-    /*@Test
+    @Test
     public void testAttackSameEmptySquareMultipleTimes() {
+        board.placeShip(new Ship("MINESWEEPER"), 3, 'A', false);
         Result initialResult = board.attack(1, 'A');
         assertEquals(AtackStatus.MISS, initialResult.getResult());
         Result result = board.attack(1, 'A');
         assertEquals(AtackStatus.INVALID, result.getResult());
     }
 
-    @Test
-    /public void testSurrender() {
+    /*@Test
+    public void testSurrender() {
         board.placeShip(new Ship("MINESWEEPER"), 1, 'A', true);
+        board.placeShip(new Ship("DESTROYER"), 1, 'B', true);
+        board.placeShip(new Ship("BATTLESHIP"), 1, 'C', true);
+        board.placeShip(new Ship("SUBMARINE"), 1, 'D', true);
         board.attack(1, 'A');
-        var result = board.attack(2, 'A');
+        board.attack(2, 'A');
+
+        board.attack(1, 'B');
+        board.attack(2, 'B');
+        board.attack(3, 'B');
+
+        board.attack(1, 'C');
+        board.attack(2, 'C');
+        board.attack(3, 'C');
+        board.attack(4, 'C');
+
+        board.attack(1, 'D');
+        board.attack(2, 'D');
+        board.attack(2, 'E');
+        board.attack(3, 'D');
+        Result result = board.attack(4, 'D');
         assertEquals(AtackStatus.SURRENDER, result.getResult());
     }*/
 

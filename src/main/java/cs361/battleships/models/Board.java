@@ -16,7 +16,7 @@ public class Board {
 	private List<Square> sonars;
 	private int rows;
 	private int cols;
-	private int  numAttacks;
+	private int numAttacks;
 	//private int numSonars;
 
 	/*
@@ -99,6 +99,17 @@ public class Board {
 							this.numAttacks++;
 						}
 					}
+
+					// check to see if all occupied squares of each ship has a result of 'HIT',
+					// if so, set all squares to the status of 'SUNK'
+					/*for (Ship s: this.ships) {
+						List<Square> taken2 = s.getOccupiedSquares();
+
+						for (Result allResults: this.attacks) {
+
+						}
+					}*/
+
 					if (this.numAttacks == 14) {
 						result.setResult(AtackStatus.SURRENDER);
 					}
