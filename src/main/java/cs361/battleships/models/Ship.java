@@ -28,13 +28,16 @@ public class Ship {
 		this.kind = kind;
 		switch(kind) {
 			case "MINESWEEPER":
-				size = 2;
+				this.size = 2;
 				break;
 			case "DESTROYER":
-				size = 3;
+				this.size = 3;
 				break;
 			case "BATTLESHIP":
-				size = 4;
+				this.size = 4;
+				break;
+			case "SUBMARINE":
+				this.size = 5;
 				break;
 		}
 	}
@@ -45,11 +48,32 @@ public class Ship {
 
 	public void place(char col, int row, boolean isVertical) {
 		for (int i=0; i<size; i++) {
-			if (isVertical) {
-				occupiedSquares.add(new Square(row+i, col));
-			} else {
-				occupiedSquares.add(new Square(row, (char) (col + i)));
+			if(size == 5){
+				if(isVertical) {
+					occupiedSquares.add(new Square(row, col));
+					occupiedSquares.add(new Square(row+1, col));
+					occupiedSquares.add(new Square(row+1, (char)((int)col + 1)));
+					occupiedSquares.add(new Square(row+2, col));
+					occupiedSquares.add(new Square(row+3, col));
+				}
+				else {
+					occupiedSquares.add(new Square(row, (char) (col)));
+					occupiedSquares.add(new Square(row, (char) (col + 1)));
+					occupiedSquares.add(new Square(row, (char) (col + 2)));
+					occupiedSquares.add(new Square(row - 1, (char) (col + 2)));
+					occupiedSquares.add(new Square(row, (char) (col + 3)));
+
+				}
 			}
+			else {
+				if (isVertical) {
+					occupiedSquares.add(new Square(row + i, col));
+				}
+				else {
+					occupiedSquares.add(new Square(row, (char) (col + i)));
+				}
+			}
+
 		}
 	}
 
@@ -71,7 +95,7 @@ public class Ship {
 	}
 
 	public String getKind() {
-		return kind;
+		return this.kind;
 	}
 
 	public void setArmor() {
@@ -150,7 +174,7 @@ public class Ship {
 	}
 
 	public void setUnderwater(){
-		underwater = true;
+		underwater = false;
 	}
 
 	public int getSize(){

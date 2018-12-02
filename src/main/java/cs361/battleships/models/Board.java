@@ -22,25 +22,28 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Board() {
-		this.rows = 10;
-		this.cols = 10;
-		this.numSonars = 2;
+		rows = 10;
+		cols = 10;
+		numSonars = 2;
 		ships = new ArrayList<>();
 		attacks = new ArrayList<>();
-		this.sonars = new ArrayList<>();
+		sonars = new ArrayList<>();
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		if (ships.size() >= 3) {
+		if (ships.size() >= 4) {
 			return false;
 		}
 		if (ships.stream().anyMatch(s -> s.getKind().equals(ship.getKind()))) {
 			return false;
 		}
+
+		//String kind = ship.getKind();
 		final var placedShip = new Ship(ship.getKind());
+
 		placedShip.place(y, x, isVertical);
 		if (ships.stream().anyMatch(s -> s.overlaps(placedShip))) {
 			return false;
@@ -109,25 +112,28 @@ public class Board {
 		List<Square> squares = new ArrayList<>();
 
 		// loop to create the radius for the sonar just like in 'game.js'
-		for (i = 0; i < (r + 1); i++) {
+		for (i = 1; i < (r + 1); i++) {
 			squares.add(new Square((x - i), y));
 			squares.add(new Square((x + i), y));
 			// typecasting is need for the rest of these because we cannot pass in 'int' for function
 			squares.add(new Square(x, (char) ((int) y - i)));
 			squares.add(new Square(x, (char) ((int) y + i)));
-			squares.add(new Square((x - 1), (char) ((int) y - 1)));
-			squares.add(new Square((x - 1), (char) ((int) y + 1)));
-			squares.add(new Square((x + 1), (char) ((int) y - 1)));
-			squares.add(new Square((x + 1), (char) ((int) y + 1)));
 		}
+		squares.add(new Square(x, y));
+		squares.add(new Square((x - 1), (char) ((int) y - 1)));
+		squares.add(new Square((x - 1), (char) ((int) y + 1)));
+		squares.add(new Square((x + 1), (char) ((int) y - 1)));
+		squares.add(new Square((x + 1), (char) ((int) y + 1)));
 
-		for (Square square : squares) {
+		for (Square s : squares) {
 			// this adds the squares that the sonar is used on; if there are square that aren't on the board, then
 			// we just ignore it, but if it is in it, then we add it to sonar list
-			if (square.getRow() <= this.rows && square.getRow() > 0 && ((int) square.getColumn() - 65) < this.cols && ((int) square.getColumn() - 65) >= 0) {
-				this.sonars.add(square);
+			if ((s.getRow() <= 10) && (s.getRow() > 0) && (((int) s.getColumn() - 65) < 10) && (((int) s.getColumn() - 65) >= 0)) {
+				this.sonars.add(s);
 			}
 		}
+
+		this.numSonars--;
 
 		return true;
 
@@ -160,5 +166,9 @@ public class Board {
 
 	public int getCols() {
 		return this.cols;
+	}
+
+	public int getNumSonars() {
+		return this.numSonars;
 	}
 }
