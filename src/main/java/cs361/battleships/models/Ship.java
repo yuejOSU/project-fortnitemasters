@@ -153,7 +153,7 @@ public class Ship {
 	}
 
 	public void setUnderwater(){
-		underwater = true;
+		underwater = false;
 	}
 
 	public int getSize(){
