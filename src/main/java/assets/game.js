@@ -95,7 +95,7 @@ function cellClick() {
             game = data;
             redrawGrid();
             placedShips++;
-            if (placedShips == 3) {
+            if (placedShips == 4) {
                 isSetup = false;
                 registerCellListener((e) => {});
             }
@@ -227,23 +227,61 @@ function place(size) {
         let col = this.cellIndex;
         vertical = document.getElementById("is_vertical").checked;
         let table = document.getElementById("player");
-        for (let i=0; i<size; i++) {
-            let cell;
-            if(vertical) {
-                let tableRow = table.rows[row+i];
-                if (tableRow === undefined) {
+        if (size !== 5) {
+            for (let i=0; i<size; i++) {
+                let cell;
+                if(vertical) {
+                    let tableRow = table.rows[row+i];
+                    if (tableRow === undefined) {
+                        // ship is over the edge; let the back end deal with it
+                        break;
+                    }
+                    cell = tableRow.cells[col];
+                }   else {
+                    cell = table.rows[row].cells[col+i];
+                }
+                if (cell === undefined) {
                     // ship is over the edge; let the back end deal with it
                     break;
                 }
-                cell = tableRow.cells[col];
-            } else {
-                cell = table.rows[row].cells[col+i];
+                cell.classList.toggle("placed");
             }
-            if (cell === undefined) {
-                // ship is over the edge; let the back end deal with it
-                break;
+        }
+        else {
+            for (let i = 0; i < (size - 1); i++) {
+                let cell;
+                if(vertical) {
+                    let tableRow = table.rows[row + i];
+                    if (tableRow === undefined) {
+                        // ship is over the edge; let the back end deal with it
+                        break;
+                    }
+                    if (i === 1) {
+                        cell = table.rows[row + i].cells[col + 1];
+                        cell.classList.toggle("placed");
+
+                        cell = table.rows[row + i].cells[col];
+                    }
+                    else {
+                        cell = table.rows[row + i].cells[col];
+                    }
+                }
+                else {
+                    if (i === 2) {
+                        cell = table.rows[row].cells[col + i];
+                        cell.classList.toggle("placed");
+
+                        cell = table.rows[row - 1].cells[col + i];
+                    }
+                    else {
+                        cell = table.rows[row].cells[col + i];
+                    }
+                    if (cell === undefined) {
+                        break;
+                    }
+                }
+                cell.classList.toggle("placed");
             }
-            cell.classList.toggle("placed");
         }
     }
 }
@@ -263,6 +301,10 @@ function initGame() {
         shipType = "BATTLESHIP";
        registerCellListener(place(4), "player");
     });
+     document.getElementById("place_submarine").addEventListener("click", function(e) {
+            shipType = "SUBMARINE";
+           registerCellListener(place(5), "player");
+        });
     document.getElementById("SONAR").addEventListener("click", function(e) {
         registerCellListener(sonar(), "opponent");
     });
