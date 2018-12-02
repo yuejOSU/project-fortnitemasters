@@ -30,8 +30,10 @@ function markHits(board, elementId, surrenderText) {
             className = "hit";
         else if (attack.result === "SUNK")
             className = "hit";
-        else if (attack.result === "SURRENDER")
+        else if (attack.result === "SURRENDER") {
+            className = "hit";
             alert(surrenderText);
+        }
 
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
@@ -52,16 +54,16 @@ function redrawGrid() {
 
 
     // in addition to drawing occupied ships on board, we need to account for sonar squares (basically copy)
-    game.opponentsBoard.sonars.forEach((square) => {
+    /*game.opponentsBoard.sonars.forEach((square) => {
         document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("gray");
-    });
+    });*/
 
     // looks within the sonar squares and sees if there are any occupied squares
     game.opponentsBoard.ships.forEach((ship) => ship.occupiedSquares.forEach((square) => game.opponentsBoard.sonars.forEach((sonar) => {
         // if there really is an occupied square, we remove the gray color and add the CSS listed color for "occupied"
         if(square.row == sonar.row && (square.column.charCodeAt(0) - 'A'.charCodeAt(0)) == (sonar.column.charCodeAt(0) - 'A'.charCodeAt(0))) {
-            document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.remove("gray");
-            document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
+            //document.getElementById("opponent").rows[square.row - 1].cells[square.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.remove("gray");
+            document.getElementById("opponent").rows[sonar.row - 1].cells[sonar.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add("occupied");
         }
     })));
 
