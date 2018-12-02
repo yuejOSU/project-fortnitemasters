@@ -16,7 +16,8 @@ public class Board {
 	private List<Square> sonars;
 	private int rows;
 	private int cols;
-	private int numSonars;
+	private int  numAttacks;
+	//private int numSonars;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
@@ -24,7 +25,7 @@ public class Board {
 	public Board() {
 		rows = 10;
 		cols = 10;
-		numSonars = 2;
+		//numSonars = 2;
 		ships = new ArrayList<>();
 		attacks = new ArrayList<>();
 		sonars = new ArrayList<>();
@@ -79,6 +80,9 @@ public class Board {
 
 		this.attacks.add(result);
 
+		// loops through all ships, and looks at each ships coordinates and if one of them
+		// matches with the attack coordinates, occupy the square and set the status of the
+		// square to 'HIT'
 		for (Ship ships: this.ships) {
 			List<Square> taken = ships.getOccupiedSquares();
 
@@ -86,8 +90,23 @@ public class Board {
 				if ((occupied.getRow() == x) && (occupied.getColumn() == y)) {
 					result.setResult(AtackStatus.HIT);
 					result.setLocation(occupied);
+
+					// knowing that it is a hit, loop through all attacks performed and if
+					// there are 14 hits, the total amount of squares for ships at the moment,
+					// then set the game to surrender and end the game
+					for (Result allResults: this.attacks) {
+						if (allResults.getResult() == AtackStatus.HIT) {
+							this.numAttacks++;
+						}
+					}
+					if (this.numAttacks == 14) {
+						result.setResult(AtackStatus.SURRENDER);
+					}
+
 					return result;
 				}
+				// else, if it is not a hit and the square is not invalid, it is a 'MISS'
+				// and the square status of the square should be set to 'MISS'
 				else {
 					Square square = new Square(x,y);
 					result.setLocation(square);
@@ -133,7 +152,23 @@ public class Board {
 			}
 		}
 
-		this.numSonars--;
+		Result result = new Result();
+		for (Ship ships: this.ships) {
+			List<Square> taken = ships.getOccupiedSquares();
+			for (Square sonar: this.sonars) {
+				for (Square occupied : taken) {
+					if ((occupied.getRow() == sonar.getRow()) && (occupied.getColumn() == sonar.getColumn())) {
+						result.setResult(AtackStatus.HIT);
+						result.setLocation(occupied);
+					} else {
+						Square square = new Square(x, y);
+						result.setLocation(square);
+						result.setResult(AtackStatus.MISS);
+					}
+				}
+			}
+		}
+		//this.numSonars--;
 
 		return true;
 
@@ -168,7 +203,7 @@ public class Board {
 		return this.cols;
 	}
 
-	public int getNumSonars() {
+	/*public int getNumSonars() {
 		return this.numSonars;
-	}
+	}*/
 }
