@@ -72,7 +72,20 @@ public class Game {
     }
 
     public boolean sonarPulseAttack(int x, char y, int sonarPulse) {
-        return opponentsBoard.sonar(x, y, sonarPulse);
+        boolean result = opponentsBoard.sonar(x, y, sonarPulse);
+
+        if(!result) {
+            return false;
+        }
+
+        Result opponentAttackResult;
+        do {
+            // AI does random attacks, so it might attack the same spot twice
+            // let it try until it gets it right
+            opponentAttackResult = playersBoard.attack(randRow(), randCol());
+        } while(opponentAttackResult.getResult() == INVALID);
+
+        return true;
     }
   
 }
