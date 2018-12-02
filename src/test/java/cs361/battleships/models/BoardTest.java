@@ -27,21 +27,29 @@ public class BoardTest {
     }
 
     @Test
+    public void testPlaceBattleship() {
+        assertTrue(board.placeShip(new Ship("BATTLESHIP"), 1, 'A', true));
+    }
+
+    @Test
     public void testAttackEmptySquare() {
         board.placeShip(new Ship("MINESWEEPER"), 1, 'A', true);
         Result result = board.attack(2, 'E');
         assertEquals(AtackStatus.MISS, result.getResult());
     }
 
-    /*@Test
+    @Test
     public void testAttackShip() {
+        Board board = new Board();
         Ship minesweeper = new Ship("MINESWEEPER");
         board.placeShip(minesweeper, 1, 'A', true);
-        minesweeper = board.getShips().get(0);
-        Result result = board.attack(1, 'A');
-        assertEquals(AtackStatus.HIT, result.getResult());
-        assertEquals(minesweeper, result.getShip());
-    }*/
+        Result result = new Result();
+        Result expected = new Result();
+        expected.setResult(AtackStatus.HIT);
+
+        result = board.attack(1, 'A');
+        assertEquals(expected.getResult(), result.getResult());
+    }
 
     @Test
     public void testSonar() {
@@ -59,21 +67,20 @@ public class BoardTest {
         assertEquals(AtackStatus.INVALID, result.getResult());
     }
 
-    /*@Test
+    @Test
     public void testAttackSameEmptySquareMultipleTimes() {
-        Result initialResult = board.attack(1, 'A');
-        assertEquals(AtackStatus.MISS, initialResult.getResult());
-        Result result = board.attack(1, 'A');
+        Board board = new Board();
+        Ship minesweeper = new Ship("MINESWEEPER");
+        board.placeShip(minesweeper, 1, 'A', true);
+
+        Result result = new Result();
+        result = board.attack(5, 'C');
+
+        assertEquals(AtackStatus.MISS, result.getResult());
+        result = board.attack(5, 'C');
         assertEquals(AtackStatus.INVALID, result.getResult());
     }
 
-    @Test
-    /public void testSurrender() {
-        board.placeShip(new Ship("MINESWEEPER"), 1, 'A', true);
-        board.attack(1, 'A');
-        var result = board.attack(2, 'A');
-        assertEquals(AtackStatus.SURRENDER, result.getResult());
-    }*/
 
     @Test
     public void testPlaceMultipleShipsOfSameType() {

@@ -9,48 +9,12 @@ import static org.junit.Assert.*;
 
 public class ShipTest {
 
-    @Test
-    public void testPlaceMinesweeperHorizontaly() {
-        Ship minesweeper = new Ship("MINESWEEPER");
-        minesweeper.place('A', 1, false);
-        List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
-        ArrayList<Object> expected = new ArrayList<>();
-        expected.add(new Square(1, 'A'));
-        expected.add(new Square(1, 'B'));
-        assertEquals(expected, occupiedSquares);
-    }
-/*
-    @Test
-    public void testPlaceSubmarineHorizontaly() {
-        Ship submarine = new Ship("SUBMARINE");
-        submarine.place('A', 1, false);
-        List<Square> occupiedSquares = submarine.getOccupiedSquares();
-        ArrayList<Object> expected = new ArrayList<>();
-        expected.add(new Square(1, 'A'));
-        expected.add(new Square(1, 'B'));
-        expected.add(new Square(1, 'C'));
-        expected.add(new Square(1, 'D'));
-        expected.add(new Square(1, 'E'));
-        assertEquals(expected, occupiedSquares);
-    }
+
+
 
     @Test
-    public void testPlaceSubmarineVertically() {
-        Ship submarine = new Ship("SUBMARINE");
-        submarine.place('A', 1, true);
-        List<Square> occupiedSquares = submarine.getOccupiedSquares();
-        ArrayList<Object> expected = new ArrayList<>();
-        expected.add(new Square(1, 'A'));
-        expected.add(new Square(2, 'A'));
-        expected.add(new Square(3, 'A'));
-        expected.add(new Square(4, 'A'));
-        expected.add(new Square(5, 'A'));
-        assertEquals(expected, occupiedSquares);
-    }
-*/
-    @Test
-    public void testPlaceMinesweeperVertically() {
-        Ship minesweeper = new Ship("MINESWEEPER");
+    public void testPlaceMinesweeper() {
+        Ship minesweeper = new minesweeper();
         minesweeper.place('A', 1, true);
         List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
         ArrayList<Object> expected = new ArrayList<>();
@@ -59,21 +23,11 @@ public class ShipTest {
         assertEquals(expected, occupiedSquares);
     }
 
-    @Test
-    public void testPlaceDestroyerHorizontaly() {
-        Ship minesweeper = new Ship("DESTROYER");
-        minesweeper.place('A', 1, false);
-        List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
-        ArrayList<Object> expected = new ArrayList<>();
-        expected.add(new Square(1, 'A'));
-        expected.add(new Square(1, 'B'));
-        expected.add(new Square(1, 'C'));
-        assertEquals(expected, occupiedSquares);
-    }
+
 
     @Test
-    public void testPlaceDestroyerVertically() {
-        Ship minesweeper = new Ship("DESTROYER");
+    public void testPlaceDestroyer() {
+        Ship minesweeper = new destroyer();
         minesweeper.place('A', 1, true);
         List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
         ArrayList<Object> expected = new ArrayList<>();
@@ -85,7 +39,7 @@ public class ShipTest {
 
     @Test
     public void testPlaceBattleshipHorizontaly() {
-        Ship minesweeper = new Ship("BATTLESHIP");
+        Ship minesweeper = new battleship();
         minesweeper.place('A', 1, false);
         List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
         ArrayList<Object> expected = new ArrayList<>();
@@ -200,5 +154,7 @@ public class ShipTest {
         var result = minesweeper.attack(1, 'A');
         assertEquals(AtackStatus.HIT, result.getResult());
     }
+
+
 
 }

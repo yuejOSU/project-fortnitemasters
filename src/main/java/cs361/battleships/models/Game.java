@@ -58,12 +58,12 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
+    protected char randCol() {
         int random = new Random().nextInt(10);
         return (char) ('A' + random);
     }
 
-    private int randRow() {
+    protected int randRow() {
         return  new Random().nextInt(10) + 1;
     }
 

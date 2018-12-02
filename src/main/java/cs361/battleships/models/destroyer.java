@@ -10,11 +10,11 @@ public class destroyer extends Ship {
 
 
         for (int i=0; i<3; i++) {
-            this.occupiedSquares.add(new Square(0, 'A'));
+            this.occupiedSquares.add(new Square(1+i, 'A'));
         }
 
     }
-
+/*
     public void setCaptainsQuarters(int row, char column, boolean vertical) {
         String col = "ABCDEFGHIJ";
         int x = 0;
@@ -33,4 +33,5 @@ public class destroyer extends Ship {
         armor.setArmor(2);
         this.armor = armor;
     }
+    */
 }
