@@ -40,7 +40,10 @@ public class Board {
 		if (ships.stream().anyMatch(s -> s.getKind().equals(ship.getKind()))) {
 			return false;
 		}
+
+		//String kind = ship.getKind();
 		final var placedShip = new Ship(ship.getKind());
+
 		placedShip.place(y, x, isVertical);
 		if (ships.stream().anyMatch(s -> s.overlaps(placedShip))) {
 			return false;
