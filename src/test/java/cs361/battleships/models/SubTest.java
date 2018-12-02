@@ -15,6 +15,6 @@ import static org.junit.Assert.assertEquals;
             sub.setUnderwater();
             assertEquals(5, sub.getSize());
             assertEquals("SUBMARINE", sub.getKind());
-            assertEquals(true, sub.getUnderwater());
+            assertEquals(false, sub.getUnderwater());
         }
     }

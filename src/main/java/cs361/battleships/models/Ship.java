@@ -28,13 +28,16 @@ public class Ship {
 		this.kind = kind;
 		switch(kind) {
 			case "MINESWEEPER":
-				size = 2;
+				this.size = 2;
 				break;
 			case "DESTROYER":
-				size = 3;
+				this.size = 3;
 				break;
 			case "BATTLESHIP":
-				size = 4;
+				this.size = 4;
+				break;
+			case "SUBMARINE":
+				this.size = 5;
 				break;
 		}
 	}
@@ -150,7 +153,7 @@ public class Ship {
 	}
 
 	public void setUnderwater(){
-		underwater = true;
+		underwater = false;
 	}
 
 	public int getSize(){
