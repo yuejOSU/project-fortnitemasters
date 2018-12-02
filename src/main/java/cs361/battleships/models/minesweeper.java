@@ -9,11 +9,11 @@ public class minesweeper extends Ship {
         this.kind = "MINESWEEPER"; // sets kind equal to what was passed in
 
         for (int i=0; i<2; i++) {
-            this.occupiedSquares.add(new Square(0, 'A'));
+            this.occupiedSquares.add(new Square(1+i, 'A'));
         }
 
     }
-
+/*
     public void setCaptainsQuarters(int row, char column, boolean vertical){
         this.captainsQuarters = new Square(row, column);
         Armor armor = new Armor();
@@ -21,4 +21,5 @@ public class minesweeper extends Ship {
         this.armor = armor;
 
     }
+    */
 }
