@@ -15,7 +15,7 @@ public class Ship {
 	@JsonProperty protected String kind;
 	@JsonProperty protected List<Square> occupiedSquares;
 	@JsonProperty protected int size;
-	@JsonProperty protected Armor armor;
+	//@JsonProperty protected Armor armor;
 	@JsonProperty protected Square captainsQuarters;
 	protected boolean underwater;
 

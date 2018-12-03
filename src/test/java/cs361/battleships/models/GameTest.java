@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class GameTest {
 
@@ -28,6 +29,13 @@ public class GameTest {
         for(int i=0; i<20; i++) {
             assertTrue(game.randCol() >= 'A' && game.randCol() <= 'J');
         }
+    }
+
+    @Test
+    public void testnotSonarPulseAttack() {
+        Game game = new Game();
+        boolean result = game.sonarPulseAttack(11, 'E', 2);
+        assertFalse(result);
     }
 
     @Test

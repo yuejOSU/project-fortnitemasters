@@ -187,7 +187,7 @@ public class Board {
 
 	}
 
-	public Result moveFleet(String Dir){
+	/*public Result moveFleet(String Dir){
 
 		Result result = new Result();
 		AtackStatus temp;
@@ -252,7 +252,7 @@ public class Board {
 		return this.cols;
 	}
 
-	/*public int getNumSonars() {
+	public int getNumSonars() {
 		return this.numSonars;
 	}*/
 }

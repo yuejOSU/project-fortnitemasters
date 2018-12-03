@@ -88,7 +88,7 @@ public class Game {
         return true;
     }
 
-    public boolean moveFleet(String Direction){
+    /*public boolean moveFleet(String Direction){
         Result fleetMovement = playersBoard.moveFleet(Direction);
         Result oppResult;
 
@@ -96,6 +96,6 @@ public class Game {
             oppResult = playersBoard.attack(randRow(), randCol());
         }while(oppResult.getResult() == INVALID);
         return true;
-    }
+    }*/
   
 }
