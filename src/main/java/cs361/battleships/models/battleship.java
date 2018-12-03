@@ -9,11 +9,11 @@ public class battleship extends Ship {
         this.kind = "BATTLESHIP"; // sets kind equal to what was passed in
 
         for (int i=0; i<4; i++) {
-            this.occupiedSquares.add(new Square(0, 'A'));
+            this.occupiedSquares.add(new Square(1, (char)('A' + i)));
         }
 
     }
-
+/*
     public void setCaptainsQuarters(int row, char column, boolean vertical) {
         String col = "ABCDEFGHIJ";
         int x = 0;
@@ -33,5 +33,5 @@ public class battleship extends Ship {
         armor.setArmor(2);
         this.armor = armor;
     }
-
+*/
 }

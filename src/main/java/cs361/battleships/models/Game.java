@@ -58,12 +58,12 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
+    protected char randCol() {
         int random = new Random().nextInt(10);
         return (char) ('A' + random);
     }
 
-    private int randRow() {
+    protected int randRow() {
         return  new Random().nextInt(10) + 1;
     }
 
@@ -85,6 +85,16 @@ public class Game {
             opponentAttackResult = playersBoard.attack(randRow(), randCol());
         } while(opponentAttackResult.getResult() == INVALID);
 
+        return true;
+    }
+
+    public boolean moveFleet(String Direction){
+        Result fleetMovement = playersBoard.moveFleet(Direction);
+        Result oppResult;
+
+        do{
+            oppResult = playersBoard.attack(randRow(), randCol());
+        }while(oppResult.getResult() == INVALID);
         return true;
     }
   
